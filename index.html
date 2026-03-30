@@ -1,0 +1,1595 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GYMBRO — Membresías de Élite · Ecuador</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --accent: #E04A28;
+      --accent-dim: #b83a1e;
+      --bg: #080808;
+      --bg-2: #111111;
+      --bg-3: #181818;
+      --border: rgba(255,255,255,0.07);
+      --text: #f0ede8;
+      --text-muted: #7a7672;
+      --text-subtle: #4a4744;
+      --font: 'Outfit', sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection { background: var(--accent); color: #fff; }
+
+    /* ─── SCROLLBAR ─── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 4rem;
+      background: rgba(8,8,8,0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: padding 0.3s ease;
+    }
+
+    .nav-logo {
+      font-size: 1.5rem;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-cta {
+      background: var(--accent);
+      color: #fff !important;
+      padding: 0.6rem 1.4rem;
+      border-radius: 6px;
+      font-weight: 600 !important;
+      font-size: 0.875rem !important;
+      transition: background 0.2s, transform 0.15s !important;
+    }
+    .nav-cta:hover {
+      background: var(--accent-dim) !important;
+      transform: translateY(-1px);
+      color: #fff !important;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100dvh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 10rem 3rem 6rem 4rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(224,74,40,0.1);
+      border: 1px solid rgba(224,74,40,0.25);
+      padding: 0.35rem 0.9rem;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 2rem;
+      width: fit-content;
+    }
+    .hero-badge-dot {
+      width: 6px; height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse-dot 2s infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    .hero-title {
+      font-size: clamp(3.2rem, 6vw, 5.5rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 0.95;
+      margin-bottom: 1.75rem;
+      color: var(--text);
+    }
+    .hero-title .accent { color: var(--accent); }
+    .hero-title .line-2 {
+      display: block;
+      color: var(--text-muted);
+      font-weight: 300;
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 44ch;
+      margin-bottom: 2.75rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--accent);
+      color: #fff;
+      padding: 0.85rem 1.85rem;
+      border-radius: 8px;
+      font-family: var(--font);
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 0 0 0 rgba(224,74,40,0);
+    }
+    .btn-primary:hover {
+      background: var(--accent-dim);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(224,74,40,0.3);
+    }
+    .btn-primary:active { transform: translateY(0) scale(0.98); }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .btn-ghost:hover { color: var(--text); }
+    .btn-ghost svg { transition: transform 0.2s; }
+    .btn-ghost:hover svg { transform: translateX(3px); }
+
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      margin-top: 3.5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--border);
+    }
+    .hero-stat-num {
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      color: var(--text);
+      font-family: var(--mono);
+    }
+    .hero-stat-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 500;
+      margin-top: 0.15rem;
+    }
+
+    /* Hero Right — Image */
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-right img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      filter: grayscale(20%) contrast(1.05);
+    }
+    .hero-right::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, var(--bg) 0%, transparent 35%, transparent 65%, rgba(8,8,8,0.3) 100%),
+                  linear-gradient(to top, rgba(8,8,8,0.6) 0%, transparent 30%);
+    }
+
+    .hero-tag {
+      position: absolute;
+      bottom: 3rem;
+      right: 3rem;
+      z-index: 3;
+      background: rgba(8,8,8,0.8);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      min-width: 200px;
+    }
+    .hero-tag-label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.4rem; }
+    .hero-tag-value { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.04em; color: var(--text); font-family: var(--mono); }
+    .hero-tag-sub { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.15rem; }
+
+    /* ─── TICKER ─── */
+    .ticker {
+      background: var(--accent);
+      padding: 0.7rem 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .ticker-inner {
+      display: inline-flex;
+      gap: 4rem;
+      animation: ticker-scroll 22s linear infinite;
+    }
+    .ticker-item {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.9);
+      flex-shrink: 0;
+    }
+    .ticker-sep { color: rgba(255,255,255,0.4); }
+    @keyframes ticker-scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ─── SECTIONS ─── */
+    section { padding: 7rem 4rem; }
+    .container { max-width: 1320px; margin: 0 auto; }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+    }
+    .section-title {
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      color: var(--text);
+      margin-bottom: 1.25rem;
+    }
+    .section-sub {
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 50ch;
+    }
+
+    /* ─── FEATURES ─── */
+    .features { background: var(--bg); }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      margin-top: 5rem;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .feature-item {
+      padding: 2.5rem 3rem;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.25s;
+      position: relative;
+    }
+    .feature-item:nth-child(odd) { border-right: 1px solid var(--border); }
+    .feature-item:nth-last-child(-n+2) { border-bottom: none; }
+    .feature-item:hover { background: var(--bg-2); }
+
+    .feature-icon {
+      width: 44px; height: 44px;
+      background: rgba(224,74,40,0.1);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      color: var(--accent);
+    }
+    .feature-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .feature-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      max-width: 40ch;
+    }
+
+    /* ─── MEMBERSHIP PLANS ─── */
+    .plans { background: var(--bg-2); }
+
+    .plans-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: end;
+      margin-bottom: 4rem;
+    }
+
+    .plans-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr 1fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    .plan-card {
+      background: var(--bg-3);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem 2rem 2.5rem;
+      position: relative;
+      transition: transform 0.25s, border-color 0.25s;
+    }
+    .plan-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255,255,255,0.12);
+    }
+    .plan-card.featured {
+      background: var(--bg);
+      border-color: var(--accent);
+      transform: none;
+      box-shadow: 0 0 40px rgba(224,74,40,0.12), inset 0 1px 0 rgba(255,255,255,0.04);
+    }
+    .plan-card.featured:hover { transform: translateY(-4px); }
+
+    .plan-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 1rem;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+
+    .plan-name {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+    .plan-price {
+      font-size: 3rem;
+      font-weight: 900;
+      letter-spacing: -0.06em;
+      color: var(--text);
+      line-height: 1;
+      font-family: var(--mono);
+    }
+    .plan-price sup {
+      font-size: 1.2rem;
+      font-weight: 600;
+      vertical-align: super;
+      letter-spacing: 0;
+    }
+    .plan-price-period {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-family: var(--font);
+      font-weight: 400;
+      margin-top: 0.3rem;
+      letter-spacing: 0;
+    }
+    .plan-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 1.75rem 0;
+    }
+    .plan-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+    .plan-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+    .plan-features li.active { color: var(--text); }
+    .check-icon {
+      flex-shrink: 0;
+      width: 16px; height: 16px;
+      margin-top: 1px;
+      color: var(--accent);
+    }
+    .x-icon {
+      flex-shrink: 0;
+      width: 16px; height: 16px;
+      margin-top: 1px;
+      color: var(--text-subtle);
+    }
+
+    .plan-btn {
+      display: block;
+      width: 100%;
+      padding: 0.85rem;
+      border-radius: 8px;
+      font-family: var(--font);
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      text-align: center;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .plan-btn-outline {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+    .plan-btn-outline:hover {
+      border-color: rgba(255,255,255,0.2);
+      color: var(--text);
+    }
+    .plan-btn-solid {
+      background: var(--accent);
+      border: 1px solid var(--accent);
+      color: #fff;
+    }
+    .plan-btn-solid:hover {
+      background: var(--accent-dim);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(224,74,40,0.3);
+    }
+    .plan-btn-solid:active { transform: scale(0.98); }
+
+    /* ─── SOCIAL PROOF ─── */
+    .proof { background: var(--bg); }
+
+    .proof-layout {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 5rem;
+      align-items: start;
+      margin-top: 4rem;
+    }
+
+    .testimonials {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .testimonial-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.75rem 2rem;
+      transition: border-color 0.2s;
+    }
+    .testimonial-card:hover { border-color: rgba(255,255,255,0.12); }
+    .testimonial-stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 1rem;
+    }
+    .star { color: var(--accent); font-size: 14px; }
+    .testimonial-text {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+      font-style: italic;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .author-avatar {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: var(--bg-3);
+      flex-shrink: 0;
+    }
+    .author-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .author-name {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .author-meta {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .proof-metrics {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .metric-row {
+      background: var(--bg-2);
+      padding: 1.5rem 1.75rem;
+    }
+    .metric-row:first-child { border-radius: 14px 14px 0 0; }
+    .metric-row:last-child { border-radius: 0 0 14px 14px; }
+    .metric-num {
+      font-size: 2.25rem;
+      font-weight: 800;
+      letter-spacing: -0.06em;
+      color: var(--text);
+      font-family: var(--mono);
+      line-height: 1;
+    }
+    .metric-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 0.3rem;
+      line-height: 1.4;
+    }
+
+    /* ─── LOCATIONS ─── */
+    .locations { background: var(--bg-2); }
+
+    .locations-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 4rem;
+    }
+    .location-card {
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 4/3;
+      cursor: pointer;
+    }
+    .location-card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      filter: grayscale(30%);
+    }
+    .location-card:hover img { transform: scale(1.05); }
+    .location-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(8,8,8,0.92) 0%, rgba(8,8,8,0.3) 50%, transparent 100%);
+    }
+    .location-info {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 1.75rem;
+      right: 1.75rem;
+    }
+    .location-city {
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: #fff;
+    }
+    .location-addr {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.55);
+      margin-top: 0.2rem;
+    }
+    .location-tag {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      margin-top: 0.6rem;
+    }
+
+    /* ─── FAQ ─── */
+    .faq { background: var(--bg); }
+
+    .faq-layout {
+      display: grid;
+      grid-template-columns: 5fr 7fr;
+      gap: 6rem;
+      align-items: start;
+      margin-top: 0;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+    .faq-question {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.5rem 0;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+      user-select: none;
+      transition: color 0.2s;
+    }
+    .faq-question:hover { color: var(--accent); }
+    .faq-chevron {
+      flex-shrink: 0;
+      width: 20px; height: 20px;
+      color: var(--text-muted);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s;
+    }
+    .faq-item.open .faq-chevron {
+      transform: rotate(180deg);
+      color: var(--accent);
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .faq-item.open .faq-answer { max-height: 300px; }
+    .faq-answer-inner {
+      padding-bottom: 1.5rem;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ─── CTA BANNER ─── */
+    .cta-section { background: var(--bg); padding: 0 4rem 7rem; }
+    .cta-banner {
+      background: var(--accent);
+      border-radius: 20px;
+      padding: 4rem 5rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 3rem;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-banner::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 280px; height: 280px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 50%;
+    }
+    .cta-banner::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: 30%;
+      width: 200px; height: 200px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 50%;
+    }
+    .cta-title {
+      font-size: clamp(1.75rem, 2.5vw, 2.5rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: #fff;
+      line-height: 1.1;
+    }
+    .cta-sub {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.7);
+      margin-top: 0.75rem;
+    }
+    .cta-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      align-items: flex-end;
+      position: relative;
+      z-index: 1;
+    }
+    .btn-white {
+      background: #fff;
+      color: var(--accent);
+      padding: 0.85rem 1.85rem;
+      border-radius: 8px;
+      font-family: var(--font);
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .btn-white:hover {
+      background: #f0ede8;
+      transform: translateY(-2px);
+    }
+    .btn-white:active { transform: scale(0.98); }
+    .cta-note {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.5);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--bg-2);
+      border-top: 1px solid var(--border);
+      padding: 4rem 4rem 2.5rem;
+    }
+    .footer-grid {
+      max-width: 1320px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 4rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .footer-brand-name {
+      font-size: 1.35rem;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+    .footer-brand-name span { color: var(--accent); }
+    .footer-brand-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      max-width: 30ch;
+      margin-bottom: 1.75rem;
+    }
+    .footer-socials {
+      display: flex;
+      gap: 0.75rem;
+    }
+    .social-link {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .social-link:hover { border-color: var(--accent); color: var(--accent); }
+
+    .footer-col-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+    .footer-links a {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--text); }
+
+    .footer-bottom {
+      max-width: 1320px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 2rem;
+      font-size: 0.8rem;
+      color: var(--text-subtle);
+    }
+
+    /* ─── ANIMATIONS ─── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up-delay-1 { transition-delay: 0.1s; }
+    .fade-up-delay-2 { transition-delay: 0.2s; }
+    .fade-up-delay-3 { transition-delay: 0.3s; }
+    .fade-up-delay-4 { transition-delay: 0.4s; }
+
+    /* ─── MOBILE NAV MENU ─── */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      top: 72px;
+      background: rgba(8,8,8,0.98);
+      backdrop-filter: blur(20px);
+      z-index: 99;
+      flex-direction: column;
+      padding: 2rem 4rem;
+      gap: 1.5rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--text); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      nav { padding: 1.25rem 2rem; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+
+      section { padding: 5rem 2rem; }
+      .cta-section { padding: 0 2rem 5rem; }
+      footer { padding: 3rem 2rem 2rem; }
+
+      .hero { grid-template-columns: 1fr; }
+      .hero-left { padding: 8rem 2rem 4rem; }
+      .hero-right { display: none; }
+      .hero-title { font-size: clamp(2.8rem, 8vw, 4rem); }
+
+      .plans-header { grid-template-columns: 1fr; gap: 1.5rem; }
+      .plans-grid { grid-template-columns: 1fr; max-width: 420px; }
+
+      .proof-layout { grid-template-columns: 1fr; gap: 3rem; }
+      .locations-grid { grid-template-columns: 1fr 1fr; }
+      .faq-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+
+      .cta-banner { grid-template-columns: 1fr; text-align: center; padding: 3rem 2rem; }
+      .cta-actions { align-items: center; }
+
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    }
+
+    @media (max-width: 640px) {
+      .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
+      .features-grid { grid-template-columns: 1fr; }
+      .feature-item:nth-child(odd) { border-right: none; }
+      .feature-item:nth-last-child(-n+2) { border-bottom: 1px solid var(--border); }
+      .feature-item:last-child { border-bottom: none; }
+      .locations-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; gap: 0.75rem; text-align: center; }
+      .mobile-menu { padding: 1.5rem 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="#" class="nav-logo">GYM<span>BRO</span></a>
+    <ul class="nav-links">
+      <li><a href="#caracteristicas">Instalaciones</a></li>
+      <li><a href="#membresias">Membresías</a></li>
+      <li><a href="#sedes">Sedes</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#membresias" class="nav-cta">Inscríbete</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#caracteristicas" onclick="closeMenu()">Instalaciones</a>
+    <a href="#membresias" onclick="closeMenu()">Membresías</a>
+    <a href="#sedes" onclick="closeMenu()">Sedes</a>
+    <a href="#faq" onclick="closeMenu()">FAQ</a>
+    <a href="#membresias" onclick="closeMenu()" style="color:var(--accent);font-weight:700;">Inscríbete Ahora</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" style="padding:0;">
+    <div class="hero-left">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Abierto en Quito, Guayaquil y Cuenca
+      </div>
+      <h1 class="hero-title">
+        Transforma tu<br>
+        <span class="accent">rendimiento</span><br>
+        <span class="line-2">sin límites.</span>
+      </h1>
+      <p class="hero-sub">
+        Infraestructura de alto rendimiento, entrenadores certificados y programas estructurados para quienes toman en serio su evolución física.
+      </p>
+      <div class="hero-actions">
+        <a href="#membresias" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Ver Membresías
+        </a>
+        <a href="#caracteristicas" class="btn-ghost">
+          Conocer más
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-num">14K+</div>
+          <div class="hero-stat-label">Miembros activos</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">3</div>
+          <div class="hero-stat-label">Ciudades</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">97.3%</div>
+          <div class="hero-stat-label">Satisfacción</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <img
+        src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&q=80"
+        alt="Instalaciones Gymbro"
+        loading="eager"
+      />
+      <div class="hero-tag">
+        <div class="hero-tag-label">Membresía desde</div>
+        <div class="hero-tag-value"><sup>$</sup>22</div>
+        <div class="hero-tag-sub">por mes · sin contratos</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-inner">
+      <span class="ticker-item">Pesas Libres</span>
+      <span class="ticker-sep">·</span>
+      <span class="ticker-item">Cardio de Alta Intensidad</span>
+      <span class="ticker-sep">·</span>
+      <span class="ticker-item">Clases Funcionales</span>
+      <span class="ticker-sep">·</span>
+      <span class="ticker-item">Entrenamiento Personal</span>
+      <span class="ticker-sep">·</span>
+      <span class="ticker-item">Nutrición Deportiva</span>
+      <span class="ticker-sep">·</span>
+      <span class="ticker-item">Zonas de Recuperación</span>
+      <span class="ticker-sep">·</span>
+      <span class="ticker-item">Open 5am — 11pm</span>
+      <span class="ticker-sep">·</span>
+      <span class="ticker-item">Pesas Libres</span>
+      <span class="ticker-sep">·</span>
+      <span class="ticker-item">Cardio de Alta Intensidad</span>
+      <span class="ticker-sep">·</span>
+      <span class="ticker-item">Clases Funcionales</span>
+      <span class="ticker-sep">·</span>
+      <span class="ticker-item">Entrenamiento Personal</span>
+      <span class="ticker-sep">·</span>
+      <span class="ticker-item">Nutrición Deportiva</span>
+      <span class="ticker-sep">·</span>
+      <span class="ticker-item">Zonas de Recuperación</span>
+      <span class="ticker-sep">·</span>
+      <span class="ticker-item">Open 5am — 11pm</span>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <section class="features" id="caracteristicas">
+    <div class="container">
+      <span class="section-label fade-up">Instalaciones</span>
+      <h2 class="section-title fade-up fade-up-delay-1">Diseñado para quienes<br>no se conforman.</h2>
+      <p class="section-sub fade-up fade-up-delay-2">Más de 2.400 m² de espacio equipado con tecnología de punta, renovado en 2024.</p>
+
+      <div class="features-grid fade-up fade-up-delay-3">
+        <div class="feature-item">
+          <div class="feature-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 5v14M18 5v14M3 9h18M3 15h18"/></svg>
+          </div>
+          <div class="feature-title">Zona de Pesas Libres</div>
+          <p class="feature-desc">Equipamiento Rogue y Hammer Strength. Plataformas olímpicas con piso de caucho importado.</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <div class="feature-title">Acceso 5am — 11pm</div>
+          <p class="feature-desc">Horarios extendidos todos los días del año. Acceso con tarjeta sin cola ni esperas.</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="feature-title">Clases Grupales Diarias</div>
+          <p class="feature-desc">+28 clases semanales: CrossFit, Spinning, Yoga, Pilates, HIIT y más. Incluidas en todos los planes.</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <div class="feature-title">Seguimiento Biométrico</div>
+          <p class="feature-desc">Análisis de composición corporal, medición de VO2 max y reportes de progreso mensuales.</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="feature-title">Vestuarios Premium</div>
+          <p class="feature-desc">Lockers digitales, duchas con agua caliente, sauna seco y zona de recuperación con crioterapia.</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <div class="feature-title">App Gymbro Pro</div>
+          <p class="feature-desc">Reserva clases, consulta tu historial de entrenamientos y gestiona tu membresía desde el móvil.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEMBERSHIP PLANS -->
+  <section class="plans" id="membresias">
+    <div class="container">
+      <div class="plans-header">
+        <div>
+          <span class="section-label fade-up">Membresías</span>
+          <h2 class="section-title fade-up fade-up-delay-1">Elige tu plan.<br>Sin contratos.</h2>
+        </div>
+        <p class="section-sub fade-up fade-up-delay-2">
+          Todos los planes incluyen acceso completo a instalaciones y clases grupales. Cancela cuando quieras.
+        </p>
+      </div>
+
+      <div class="plans-grid">
+        <!-- ESSENTIAL -->
+        <div class="plan-card fade-up">
+          <div class="plan-name">Esencial</div>
+          <div class="plan-price"><sup>$</sup>22</div>
+          <div class="plan-price-period">por mes · facturación mensual</div>
+          <div class="plan-divider"></div>
+          <ul class="plan-features">
+            <li class="active">
+              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+              Acceso a la sala principal
+            </li>
+            <li class="active">
+              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+              Clases grupales incluidas
+            </li>
+            <li class="active">
+              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+              1 sede a elección
+            </li>
+            <li class="active">
+              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+              App Gymbro básica
+            </li>
+            <li>
+              <svg class="x-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              Acceso multi-sede
+            </li>
+            <li>
+              <svg class="x-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              Análisis biométrico
+            </li>
+            <li>
+              <svg class="x-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              Sesiones de PT
+            </li>
+          </ul>
+          <a href="#" class="plan-btn plan-btn-outline">Comenzar ahora</a>
+        </div>
+
+        <!-- PRO (FEATURED) -->
+        <div class="plan-card featured fade-up fade-up-delay-1">
+          <div class="plan-badge">Más popular</div>
+          <div class="plan-name">Pro</div>
+          <div class="plan-price"><sup>$</sup>47</div>
+          <div class="plan-price-period">por mes · facturación mensual</div>
+          <div class="plan-divider"></div>
+          <ul class="plan-features">
+            <li class="active">
+              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+              Todo lo de Esencial
+            </li>
+            <li class="active">
+              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+              Acceso multi-sede (3 ciudades)
+            </li>
+            <li class="active">
+              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+              Análisis biométrico mensual
+            </li>
+            <li class="active">
+              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+              Sauna y zona de recuperación
+            </li>
+            <li class="active">
+              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+              App Gymbro Pro completa
+            </li>
+            <li class="active">
+              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+              2 sesiones PT al mes
+            </li>
+            <li>
+              <svg class="x-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              Plan nutricional personalizado
+            </li>
+          </ul>
+          <a href="#" class="plan-btn plan-btn-solid">Comenzar ahora</a>
+        </div>
+
+        <!-- ELITE -->
+        <div class="plan-card fade-up fade-up-delay-2">
+          <div class="plan-name">Élite</div>
+          <div class="plan-price"><sup>$</sup>78</div>
+          <div class="plan-price-period">por mes · facturación mensual</div>
+          <div class="plan-divider"></div>
+          <ul class="plan-features">
+            <li class="active">
+              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+              Todo lo de Pro
+            </li>
+            <li class="active">
+              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+              PT ilimitado con entrenador asignado
+            </li>
+            <li class="active">
+              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+              Plan nutricional personalizado
+            </li>
+            <li class="active">
+              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+              Crioterapia y recuperación activa
+            </li>
+            <li class="active">
+              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+              Reportes semanales de progreso
+            </li>
+            <li class="active">
+              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+              Locker personal permanente
+            </li>
+            <li class="active">
+              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+              Acceso prioritario a clases
+            </li>
+          </ul>
+          <a href="#" class="plan-btn plan-btn-outline">Comenzar ahora</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF -->
+  <section class="proof" id="prueba">
+    <div class="container">
+      <span class="section-label fade-up">Testimonios</span>
+      <h2 class="section-title fade-up fade-up-delay-1">Lo que dicen<br>nuestros miembros.</h2>
+
+      <div class="proof-layout">
+        <div class="testimonials">
+          <div class="testimonial-card fade-up">
+            <div class="testimonial-stars">
+              <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+            </div>
+            <p class="testimonial-text">"Llevaba 3 años buscando un gimnasio en Quito que tuviera equipamiento serio. Gymbro tiene plataformas olímpicas de verdad, entrenadores que saben lo que hacen y las clases son brutales. Bajé 14kg en 5 meses."</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">
+                <img src="https://picsum.photos/seed/marcos_quito/80/80" alt="Marcos Andrade" />
+              </div>
+              <div>
+                <div class="author-name">Marcos Andrade</div>
+                <div class="author-meta">Miembro Pro · Quito, 11 meses</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card fade-up fade-up-delay-1">
+            <div class="testimonial-stars">
+              <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+            </div>
+            <p class="testimonial-text">"El acceso multi-sede me cambió la vida. Viajo seguido entre Guayaquil y Quito por trabajo, y con el plan Pro puedo entrenar en cualquier sede sin interrumpir mi rutina. La app para reservar clases es muy intuitiva."</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">
+                <img src="https://picsum.photos/seed/daniela_gye/80/80" alt="Daniela Proaño" />
+              </div>
+              <div>
+                <div class="author-name">Daniela Proaño</div>
+                <div class="author-meta">Miembro Pro · Guayaquil, 7 meses</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card fade-up fade-up-delay-2">
+            <div class="testimonial-stars">
+              <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+            </div>
+            <p class="testimonial-text">"El plan Élite con PT incluido vale completamente su precio. Mi entrenador Sebastián diseñó un programa específico para mis metas y tenemos seguimiento semanal. En 4 meses logré más que en 2 años entrenando solo."</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">
+                <img src="https://picsum.photos/seed/rodrigo_cuenca/80/80" alt="Rodrigo Vásconez" />
+              </div>
+              <div>
+                <div class="author-name">Rodrigo Vásconez</div>
+                <div class="author-meta">Miembro Élite · Cuenca, 4 meses</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="proof-metrics fade-up fade-up-delay-1">
+          <div class="metric-row">
+            <div class="metric-num">14,271</div>
+            <div class="metric-label">Miembros activos en Ecuador</div>
+          </div>
+          <div class="metric-row">
+            <div class="metric-num">97.3%</div>
+            <div class="metric-label">Tasa de satisfacción general</div>
+          </div>
+          <div class="metric-row">
+            <div class="metric-num">8.4</div>
+            <div class="metric-label">Promedio de visitas por mes</div>
+          </div>
+          <div class="metric-row">
+            <div class="metric-num">2,400m²</div>
+            <div class="metric-label">Superficie por sede</div>
+          </div>
+          <div class="metric-row">
+            <div class="metric-num">28+</div>
+            <div class="metric-label">Clases grupales por semana</div>
+          </div>
+          <div class="metric-row">
+            <div class="metric-num">5</div>
+            <div class="metric-label">Años de operación ininterrumpida</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATIONS -->
+  <section class="locations" id="sedes">
+    <div class="container">
+      <span class="section-label fade-up">Sedes</span>
+      <h2 class="section-title fade-up fade-up-delay-1">Tres ciudades.<br>Un solo acceso.</h2>
+
+      <div class="locations-grid">
+        <div class="location-card fade-up">
+          <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=800&q=80" alt="Sede Quito" />
+          <div class="location-overlay"></div>
+          <div class="location-info">
+            <div class="location-city">Quito</div>
+            <div class="location-addr">Av. República del Salvador N35-65 y Suecia, Quito 170503</div>
+            <span class="location-tag">Sede principal</span>
+          </div>
+        </div>
+        <div class="location-card fade-up fade-up-delay-1">
+          <img src="https://images.unsplash.com/photo-1593079831268-3381b0db4a77?w=800&q=80" alt="Sede Guayaquil" />
+          <div class="location-overlay"></div>
+          <div class="location-info">
+            <div class="location-city">Guayaquil</div>
+            <div class="location-addr">Av. Francisco de Orellana y Joaquín Orrantia, Guayaquil 090505</div>
+            <span class="location-tag">Abierta 24h</span>
+          </div>
+        </div>
+        <div class="location-card fade-up fade-up-delay-2">
+          <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=800&q=80" alt="Sede Cuenca" />
+          <div class="location-overlay"></div>
+          <div class="location-info">
+            <div class="location-city">Cuenca</div>
+            <div class="location-addr">Av. Solano 10-43 y Remigio Crespo, Cuenca 010204</div>
+            <span class="location-tag">Nueva sede 2024</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="faq-layout">
+        <div>
+          <span class="section-label fade-up">FAQ</span>
+          <h2 class="section-title fade-up fade-up-delay-1">Preguntas<br>frecuentes.</h2>
+          <p class="section-sub fade-up fade-up-delay-2" style="margin-top:1rem;">
+            Si no encuentras lo que buscas, escríbenos en WhatsApp o visita cualquier sede.
+          </p>
+          <a href="#" class="btn-primary fade-up fade-up-delay-3" style="margin-top:2rem; display:inline-flex;">
+            Contactar soporte
+          </a>
+        </div>
+
+        <div class="faq-list fade-up fade-up-delay-1">
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              ¿Hay contrato de permanencia mínima?
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">No. Todos nuestros planes son mes a mes sin ningún tipo de contrato o penalización por cancelación. Puedes pausar o cancelar tu membresía desde la app con un clic, con efecto al final del periodo facturado.</div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              ¿Puedo congelar mi membresía si viajo?
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">Sí. Los planes Pro y Élite permiten congelar la membresía hasta 30 días por año sin costo adicional. El plan Esencial puede congelar hasta 15 días. La solicitud se gestiona desde la app.</div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              ¿Qué métodos de pago aceptan?
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">Aceptamos tarjetas de crédito y débito (Visa, Mastercard, Diners Club), transferencias bancarias a Banco Pichincha y Banco Guayaquil, y pagos en efectivo directamente en sede. El cobro se realiza automáticamente el mismo día de inscripción cada mes.</div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              ¿El acceso a clases tiene costo adicional?
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">No. Todas las clases grupales están incluidas en los tres planes sin costo extra: Spinning, HIIT, Yoga, Pilates, CrossFit, Functional Training y más. Solo necesitas reservar tu cupo desde la app con anticipación.</div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              ¿Puedo llevar a un invitado?
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">Los planes Pro y Élite incluyen 2 pases de invitado por mes a un costo de $3 por visita adicional. El plan Esencial permite invitados a $5 por visita. Los pases no son acumulables.</div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              ¿Ofrecen planes corporativos para empresas?
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">Sí. Contamos con planes corporativos para equipos desde 5 personas con descuentos de hasta el 35%. Incluye facturación consolidada y reporte de uso por empleado. Contáctanos en corporativo@gymbro.ec para cotizar.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <div class="cta-section">
+    <div class="container">
+      <div class="cta-banner fade-up">
+        <div>
+          <h2 class="cta-title">Tu primer mes<br>por $1. Sin excusas.</h2>
+          <p class="cta-sub">Oferta válida para nuevos miembros. Cancela antes del mes 2 sin ningún costo.</p>
+        </div>
+        <div class="cta-actions">
+          <a href="#membresias" class="btn-white">Activar oferta ahora</a>
+          <span class="cta-note">Disponible en las 3 sedes · Ecuador</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">GYM<span>BRO</span></div>
+        <p class="footer-brand-desc">Infraestructura de alto rendimiento para quienes toman en serio su evolución física. Ecuador, desde 2019.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-link" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="TikTok">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="YouTube">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-1.96C18.88 4 12 4 12 4s-6.88 0-8.6.46A2.78 2.78 0 0 0 1.46 6.42C1 8.15 1 12 1 12s0 3.85.46 5.58a2.78 2.78 0 0 0 1.94 1.96C5.12 20 12 20 12 20s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-1.96C23 15.85 23 12 23 12s0-3.85-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="Facebook">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Membresías</div>
+        <ul class="footer-links">
+          <li><a href="#membresias">Plan Esencial</a></li>
+          <li><a href="#membresias">Plan Pro</a></li>
+          <li><a href="#membresias">Plan Élite</a></li>
+          <li><a href="#">Corporativo</a></li>
+          <li><a href="#">Pase diario</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Sedes</div>
+        <ul class="footer-links">
+          <li><a href="#sedes">Quito Norte</a></li>
+          <li><a href="#sedes">Quito Sur</a></li>
+          <li><a href="#sedes">Guayaquil Kennedy</a></li>
+          <li><a href="#sedes">Cuenca El Ejido</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Empresa</div>
+        <ul class="footer-links">
+          <li><a href="#">Nosotros</a></li>
+          <li><a href="#">Blog de entrenamiento</a></li>
+          <li><a href="#">Trabaja con nosotros</a></li>
+          <li><a href="#">Términos y condiciones</a></li>
+          <li><a href="#">Política de privacidad</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Gymbro Ecuador S.A.S. RUC 1791234567001</span>
+      <span>Hecho con rigor en Ecuador</span>
+    </div>
+  </footer>
+
+  <script>
+    // ── Hamburger Menu ──
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
+
+    function closeMenu() {
+      mobileMenu.classList.remove('open');
+    }
+
+    // ── Intersection Observer (fade-up) ──
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // ── FAQ toggle ──
+    function toggleFaq(el) {
+      const item = el.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+
+    // ── Navbar shrink on scroll ──
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 60) {
+        navbar.style.padding = '0.85rem 4rem';
+      } else {
+        navbar.style.padding = '1.25rem 4rem';
+      }
+    }, { passive: true });
+  </script>
+</body>
+</html>
