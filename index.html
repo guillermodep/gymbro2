@@ -3,13 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GYMBRO — Membresías de Élite · Ecuador</title>
+  <title>GYMBRO — Un pase. 40+ gimnasios en Ecuador.</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
       --accent: #E04A28;
       --accent-dim: #b83a1e;
@@ -19,1933 +18,1132 @@
       --border: rgba(255,255,255,0.07);
       --text: #f0ede8;
       --text-muted: #7a7672;
-      --text-subtle: #4a4744;
+      --text-subtle: #3a3836;
       --font: 'Outfit', sans-serif;
       --mono: 'JetBrains Mono', monospace;
     }
-
     html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--font);
-      font-size: 16px;
-      line-height: 1.6;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-    }
-
+    body { background: var(--bg); color: var(--text); font-family: var(--font); font-size: 16px; line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
     ::selection { background: var(--accent); color: #fff; }
-
-    /* ─── SCROLLBAR ─── */
     ::-webkit-scrollbar { width: 4px; }
     ::-webkit-scrollbar-track { background: var(--bg); }
     ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
 
-    /* ─── NAV ─── */
+    /* NAV */
     nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
       padding: 1.25rem 4rem;
-      background: rgba(8,8,8,0.85);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      background: rgba(8,8,8,0.88); backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
       transition: padding 0.3s ease;
     }
-
-    .nav-logo {
-      font-size: 1.5rem;
-      font-weight: 900;
-      letter-spacing: -0.04em;
-      color: var(--text);
-      text-decoration: none;
-    }
+    .nav-logo { font-size: 1.5rem; font-weight: 900; letter-spacing: -0.04em; color: var(--text); text-decoration: none; }
     .nav-logo span { color: var(--accent); }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 2.5rem;
-      list-style: none;
-    }
-    .nav-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.875rem;
-      font-weight: 500;
-      letter-spacing: 0.01em;
-      transition: color 0.2s;
-    }
+    .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
     .nav-links a:hover { color: var(--text); }
+    .nav-cta { background: var(--accent) !important; color: #fff !important; padding: 0.6rem 1.4rem !important; border-radius: 6px; font-weight: 700 !important; transition: background 0.2s, transform 0.15s !important; }
+    .nav-cta:hover { background: var(--accent-dim) !important; transform: translateY(-1px); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; }
 
-    .nav-cta {
-      background: var(--accent);
-      color: #fff !important;
-      padding: 0.6rem 1.4rem;
-      border-radius: 6px;
-      font-weight: 600 !important;
-      font-size: 0.875rem !important;
-      transition: background 0.2s, transform 0.15s !important;
-    }
-    .nav-cta:hover {
-      background: var(--accent-dim) !important;
-      transform: translateY(-1px);
-      color: #fff !important;
-    }
-
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      background: none;
-      border: none;
-    }
-    .hamburger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--text);
-      border-radius: 2px;
-      transition: all 0.3s;
-    }
-
-    /* ─── HERO ─── */
+    /* HERO */
     .hero {
-      min-height: 100dvh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      position: relative;
-      overflow: hidden;
+      min-height: 100dvh; display: grid; grid-template-columns: 1fr 1fr;
+      position: relative; overflow: hidden;
     }
-
-    .hero-left {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 10rem 3rem 6rem 4rem;
-      position: relative;
-      z-index: 2;
-    }
-
+    .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 10rem 3rem 6rem 4rem; position: relative; z-index: 2; }
     .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(224,74,40,0.1);
-      border: 1px solid rgba(224,74,40,0.25);
-      padding: 0.35rem 0.9rem;
-      border-radius: 100px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 2rem;
-      width: fit-content;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(224,74,40,0.1); border: 1px solid rgba(224,74,40,0.25);
+      padding: 0.35rem 0.9rem; border-radius: 100px;
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent);
+      margin-bottom: 2rem; width: fit-content;
     }
-    .hero-badge-dot {
-      width: 6px; height: 6px;
-      background: var(--accent);
-      border-radius: 50%;
-      animation: pulse-dot 2s infinite;
-    }
-    @keyframes pulse-dot {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.8); }
-    }
-
-    .hero-title {
-      font-size: clamp(3.2rem, 6vw, 5.5rem);
-      font-weight: 900;
-      letter-spacing: -0.04em;
-      line-height: 0.95;
-      margin-bottom: 1.75rem;
-      color: var(--text);
-    }
+    .hero-badge-dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; animation: pulse-dot 2s infinite; }
+    @keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.8)} }
+    .hero-title { font-size: clamp(3rem, 5.5vw, 5.2rem); font-weight: 900; letter-spacing: -0.045em; line-height: 0.95; margin-bottom: 1.75rem; }
     .hero-title .accent { color: var(--accent); }
-    .hero-title .line-2 {
-      display: block;
-      color: var(--text-muted);
-      font-weight: 300;
-    }
-
-    .hero-sub {
-      font-size: 1.05rem;
-      color: var(--text-muted);
-      line-height: 1.7;
-      max-width: 44ch;
-      margin-bottom: 2.75rem;
-    }
-
-    .hero-actions {
-      display: flex;
-      align-items: center;
-      gap: 1.25rem;
-      flex-wrap: wrap;
-    }
-
+    .hero-title .line-muted { color: var(--text-muted); font-weight: 300; display: block; }
+    .hero-sub { font-size: 1.05rem; color: var(--text-muted); line-height: 1.7; max-width: 46ch; margin-bottom: 2.75rem; }
+    .hero-actions { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
     .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      background: var(--accent);
-      color: #fff;
-      padding: 0.85rem 1.85rem;
-      border-radius: 8px;
-      font-family: var(--font);
-      font-size: 0.95rem;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      background: var(--accent); color: #fff; padding: 0.85rem 1.85rem;
+      border-radius: 8px; font-family: var(--font); font-size: 0.95rem; font-weight: 700;
+      text-decoration: none; border: none; cursor: pointer;
       transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-      box-shadow: 0 0 0 0 rgba(224,74,40,0);
     }
-    .btn-primary:hover {
-      background: var(--accent-dim);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(224,74,40,0.3);
-    }
-    .btn-primary:active { transform: translateY(0) scale(0.98); }
-
-    .btn-ghost {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      font-weight: 500;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
+    .btn-primary:hover { background: var(--accent-dim); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(224,74,40,0.3); }
+    .btn-primary:active { transform: scale(0.98); }
+    .btn-ghost { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--text-muted); font-size: 0.9rem; font-weight: 500; text-decoration: none; transition: color 0.2s; }
     .btn-ghost:hover { color: var(--text); }
-    .btn-ghost svg { transition: transform 0.2s; }
-    .btn-ghost:hover svg { transform: translateX(3px); }
+    .hero-stats { display: flex; gap: 2.5rem; margin-top: 3.5rem; padding-top: 2.5rem; border-top: 1px solid var(--border); }
+    .hero-stat-num { font-size: 1.8rem; font-weight: 800; letter-spacing: -0.04em; color: var(--text); font-family: var(--mono); }
+    .hero-stat-label { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 500; margin-top: 0.15rem; }
+    .hero-right { position: relative; overflow: hidden; }
+    .hero-right img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; filter: grayscale(15%) contrast(1.05); }
+    .hero-right::after { content:''; position:absolute; inset:0; background: linear-gradient(to right, var(--bg) 0%, transparent 35%), linear-gradient(to top, rgba(8,8,8,0.5) 0%, transparent 30%); }
+    .hero-float {
+      position: absolute; bottom: 3rem; right: 2rem; z-index: 3;
+      background: rgba(8,8,8,0.82); backdrop-filter: blur(16px);
+      border: 1px solid var(--border); border-radius: 14px; padding: 1.1rem 1.4rem; min-width: 190px;
+    }
+    .hero-float-label { font-size: 0.68rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.4rem; }
+    .hero-float-num { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.05em; color: var(--text); font-family: var(--mono); }
+    .hero-float-sub { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.1rem; }
 
-    .hero-stats {
-      display: flex;
-      gap: 2.5rem;
-      margin-top: 3.5rem;
-      padding-top: 2.5rem;
-      border-top: 1px solid var(--border);
-    }
-    .hero-stat-num {
-      font-size: 1.8rem;
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      color: var(--text);
-      font-family: var(--mono);
-    }
-    .hero-stat-label {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      font-weight: 500;
-      margin-top: 0.15rem;
-    }
+    /* TICKER */
+    .ticker { background: var(--accent); padding: 0.7rem 0; overflow: hidden; white-space: nowrap; }
+    .ticker-inner { display: inline-flex; gap: 4rem; animation: ticker-scroll 26s linear infinite; }
+    .ticker-item { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.9); flex-shrink: 0; }
+    .ticker-sep { color: rgba(255,255,255,0.35); }
+    @keyframes ticker-scroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
 
-    /* Hero Right — Image */
-    .hero-right {
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-right img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      object-position: center 20%;
-      filter: grayscale(20%) contrast(1.05);
-    }
-    .hero-right::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to right, var(--bg) 0%, transparent 35%, transparent 65%, rgba(8,8,8,0.3) 100%),
-                  linear-gradient(to top, rgba(8,8,8,0.6) 0%, transparent 30%);
-    }
-
-    .hero-tag {
-      position: absolute;
-      bottom: 3rem;
-      right: 3rem;
-      z-index: 3;
-      background: rgba(8,8,8,0.8);
-      backdrop-filter: blur(16px);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1rem 1.25rem;
-      min-width: 200px;
-    }
-    .hero-tag-label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.4rem; }
-    .hero-tag-value { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.04em; color: var(--text); font-family: var(--mono); }
-    .hero-tag-sub { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.15rem; }
-
-    /* ─── TICKER ─── */
-    .ticker {
-      background: var(--accent);
-      padding: 0.7rem 0;
-      overflow: hidden;
-      white-space: nowrap;
-    }
-    .ticker-inner {
-      display: inline-flex;
-      gap: 4rem;
-      animation: ticker-scroll 22s linear infinite;
-    }
-    .ticker-item {
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.9);
-      flex-shrink: 0;
-    }
-    .ticker-sep { color: rgba(255,255,255,0.4); }
-    @keyframes ticker-scroll {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
-
-    /* ─── SECTIONS ─── */
+    /* HOW IT WORKS */
     section { padding: 7rem 4rem; }
     .container { max-width: 1320px; margin: 0 auto; }
+    .section-label { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.25rem; }
+    .section-title { font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1.05; color: var(--text); margin-bottom: 1.25rem; }
+    .section-sub { font-size: 1rem; color: var(--text-muted); line-height: 1.7; max-width: 50ch; }
 
-    .section-label {
-      display: inline-block;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1.25rem;
+    .how-grid {
+      display: grid; grid-template-columns: 5fr 7fr; gap: 6rem; align-items: center; margin-top: 0;
     }
-    .section-title {
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      line-height: 1.05;
-      color: var(--text);
-      margin-bottom: 1.25rem;
-    }
-    .section-sub {
-      font-size: 1rem;
-      color: var(--text-muted);
-      line-height: 1.7;
-      max-width: 50ch;
-    }
+    .steps { display: flex; flex-direction: column; gap: 0; margin-top: 3rem; }
+    .step { display: flex; gap: 1.5rem; padding: 1.75rem 0; border-bottom: 1px solid var(--border); position: relative; }
+    .step:last-child { border-bottom: none; }
+    .step-num { font-size: 0.7rem; font-weight: 700; color: var(--accent); font-family: var(--mono); min-width: 28px; margin-top: 0.15rem; }
+    .step-title { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 0.35rem; }
+    .step-desc { font-size: 0.875rem; color: var(--text-muted); line-height: 1.65; }
 
-    /* ─── FEATURES ─── */
-    .features { background: var(--bg); }
+    .how-visual {
+      background: var(--bg-2); border: 1px solid var(--border); border-radius: 20px;
+      overflow: hidden; position: relative;
+    }
+    .how-visual-top { padding: 2rem 2rem 0; }
+    .how-visual-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1.25rem; }
+    .gym-mini-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); border-radius: 10px; overflow: hidden; margin-bottom: 1.5rem; }
+    .gym-mini-item { background: var(--bg-3); padding: 0.85rem 1.1rem; display: flex; align-items: center; justify-content: space-between; }
+    .gym-mini-name { font-size: 0.875rem; font-weight: 600; color: var(--text); }
+    .gym-mini-meta { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.1rem; }
+    .gym-mini-badge { font-size: 0.65rem; font-weight: 700; padding: 0.2rem 0.55rem; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.06em; white-space: nowrap; }
+    .badge-green { background: rgba(34,197,94,0.12); color: #4ade80; }
+    .badge-amber { background: rgba(251,191,36,0.12); color: #fbbf24; }
+    .badge-blue { background: rgba(59,130,246,0.12); color: #60a5fa; }
+    .how-visual-bottom { background: var(--bg-3); padding: 1.25rem 2rem; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+    .checkin-text { font-size: 0.875rem; font-weight: 600; color: var(--text); }
+    .checkin-sub { font-size: 0.75rem; color: var(--text-muted); }
+    .checkin-btn { background: var(--accent); color: #fff; font-size: 0.78rem; font-weight: 700; padding: 0.5rem 1rem; border-radius: 6px; border: none; cursor: default; font-family: var(--font); }
 
-    .features-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-      margin-top: 5rem;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      overflow: hidden;
-    }
+    /* GYM NETWORK */
+    .network { background: var(--bg-2); }
+    .network-header { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: end; margin-bottom: 3rem; }
 
-    .feature-item {
-      padding: 2.5rem 3rem;
-      border-bottom: 1px solid var(--border);
-      transition: background 0.25s;
-      position: relative;
+    .filter-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .filter-btn {
+      padding: 0.45rem 1.1rem; border-radius: 100px;
+      font-family: var(--font); font-size: 0.78rem; font-weight: 600; cursor: pointer;
+      border: 1px solid var(--border); background: transparent; color: var(--text-muted);
+      transition: all 0.2s; white-space: nowrap;
     }
-    .feature-item:nth-child(odd) { border-right: 1px solid var(--border); }
-    .feature-item:nth-last-child(-n+2) { border-bottom: none; }
-    .feature-item:hover { background: var(--bg-2); }
+    .filter-btn:hover { border-color: rgba(255,255,255,0.18); color: var(--text); }
+    .filter-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .filter-sep { width: 1px; background: var(--border); margin: 0 0.25rem; align-self: stretch; }
 
-    .feature-icon {
-      width: 44px; height: 44px;
-      background: rgba(224,74,40,0.1);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1.25rem;
-      color: var(--accent);
+    .gyms-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .gym-card {
+      background: var(--bg-3); border: 1px solid var(--border); border-radius: 14px;
+      overflow: hidden; cursor: pointer;
+      transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), border-color 0.25s;
     }
-    .feature-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      color: var(--text);
-      margin-bottom: 0.5rem;
-    }
-    .feature-desc {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      line-height: 1.65;
-      max-width: 40ch;
-    }
+    .gym-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.12); }
+    .gym-card.hidden { display: none; }
+    .gym-card-img { width: 100%; height: 160px; object-fit: cover; filter: grayscale(20%); transition: transform 0.4s cubic-bezier(0.16,1,0.3,1); display: block; }
+    .gym-card:hover .gym-card-img { transform: scale(1.04); }
+    .gym-card-body { padding: 1.1rem 1.25rem 1.35rem; }
+    .gym-card-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.75rem; }
+    .gym-card-tag { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.2rem 0.55rem; border-radius: 4px; background: rgba(255,255,255,0.05); color: var(--text-muted); border: 1px solid var(--border); }
+    .gym-card-tag.accent-tag { background: rgba(224,74,40,0.1); color: var(--accent); border-color: rgba(224,74,40,0.2); }
+    .gym-card-name { font-size: 1rem; font-weight: 800; letter-spacing: -0.02em; color: var(--text); margin-bottom: 0.25rem; }
+    .gym-card-addr { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.75rem; line-height: 1.4; }
+    .gym-card-footer { display: flex; align-items: center; justify-content: space-between; }
+    .gym-card-city { font-size: 0.72rem; font-weight: 600; color: var(--text-muted); display: flex; align-items: center; gap: 0.3rem; }
+    .gym-card-plans { font-size: 0.7rem; color: var(--text-subtle); font-weight: 500; }
+    .gym-card-arrow { color: var(--text-subtle); transition: color 0.2s, transform 0.2s; }
+    .gym-card:hover .gym-card-arrow { color: var(--accent); transform: translateX(3px); }
 
-    /* ─── MEMBERSHIP PLANS ─── */
-    .plans { background: var(--bg-2); }
-
-    .plans-header {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: end;
-      margin-bottom: 4rem;
-    }
-
-    .plans-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.1fr 1fr;
-      gap: 1.5rem;
-      align-items: start;
-    }
-
-    .plan-card {
-      background: var(--bg-3);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 2rem 2rem 2.5rem;
-      position: relative;
-      transition: transform 0.25s, border-color 0.25s;
-    }
-    .plan-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(255,255,255,0.12);
-    }
-    .plan-card.featured {
-      background: var(--bg);
-      border-color: var(--accent);
-      transform: none;
-      box-shadow: 0 0 40px rgba(224,74,40,0.12), inset 0 1px 0 rgba(255,255,255,0.04);
-    }
-    .plan-card.featured:hover { transform: translateY(-4px); }
-
-    .plan-badge {
-      position: absolute;
-      top: -12px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--accent);
-      color: #fff;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.3rem 1rem;
-      border-radius: 100px;
-      white-space: nowrap;
-    }
-
-    .plan-name {
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 1.25rem;
-    }
-    .plan-price {
-      font-size: 3rem;
-      font-weight: 900;
-      letter-spacing: -0.06em;
-      color: var(--text);
-      line-height: 1;
-      font-family: var(--mono);
-    }
-    .plan-price sup {
-      font-size: 1.2rem;
-      font-weight: 600;
-      vertical-align: super;
-      letter-spacing: 0;
-    }
-    .plan-price-period {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      font-family: var(--font);
-      font-weight: 400;
-      margin-top: 0.3rem;
-      letter-spacing: 0;
-    }
-    .plan-divider {
-      height: 1px;
-      background: var(--border);
-      margin: 1.75rem 0;
-    }
-    .plan-features {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      margin-bottom: 2rem;
-    }
-    .plan-features li {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.6rem;
-      font-size: 0.875rem;
-      color: var(--text-muted);
-      line-height: 1.45;
-    }
+    /* PLANS */
+    .plans { background: var(--bg); }
+    .plans-header { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end; margin-bottom: 4rem; }
+    .plans-grid { display: grid; grid-template-columns: 1fr 1.08fr 1fr; gap: 1.5rem; }
+    .plan-card { background: var(--bg-3); border: 1px solid var(--border); border-radius: 16px; padding: 2rem 2rem 2.5rem; position: relative; transition: transform 0.25s, border-color 0.25s; }
+    .plan-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.12); }
+    .plan-card.featured { background: var(--bg); border-color: var(--accent); box-shadow: 0 0 40px rgba(224,74,40,0.1), inset 0 1px 0 rgba(255,255,255,0.04); }
+    .plan-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--accent); color: #fff; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 1rem; border-radius: 100px; white-space: nowrap; }
+    .plan-name { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1.25rem; }
+    .plan-price { font-size: 3rem; font-weight: 900; letter-spacing: -0.06em; color: var(--text); line-height: 1; font-family: var(--mono); }
+    .plan-price sup { font-size: 1.2rem; font-weight: 600; vertical-align: super; letter-spacing: 0; }
+    .plan-price-note { font-size: 0.8rem; color: var(--text-muted); font-family: var(--font); font-weight: 400; margin-top: 0.3rem; }
+    .plan-visits { display: inline-flex; align-items: baseline; gap: 0.35rem; background: rgba(224,74,40,0.08); border: 1px solid rgba(224,74,40,0.15); border-radius: 8px; padding: 0.5rem 0.85rem; margin: 1rem 0; }
+    .plan-visits-num { font-size: 1.4rem; font-weight: 800; color: var(--accent); font-family: var(--mono); letter-spacing: -0.04em; }
+    .plan-visits-label { font-size: 0.78rem; color: var(--text-muted); font-weight: 500; }
+    .plan-divider { height: 1px; background: var(--border); margin: 1.25rem 0; }
+    .plan-features { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; margin-bottom: 2rem; }
+    .plan-features li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.875rem; color: var(--text-muted); line-height: 1.45; }
     .plan-features li.active { color: var(--text); }
-    .check-icon {
-      flex-shrink: 0;
-      width: 16px; height: 16px;
-      margin-top: 1px;
-      color: var(--accent);
-    }
-    .x-icon {
-      flex-shrink: 0;
-      width: 16px; height: 16px;
-      margin-top: 1px;
-      color: var(--text-subtle);
-    }
+    .check-icon { flex-shrink: 0; width: 16px; height: 16px; margin-top: 1px; color: var(--accent); }
+    .x-icon { flex-shrink: 0; width: 16px; height: 16px; margin-top: 1px; color: var(--text-subtle); }
+    .plan-btn { display: block; width: 100%; padding: 0.85rem; border-radius: 8px; font-family: var(--font); font-size: 0.9rem; font-weight: 700; text-align: center; cursor: pointer; text-decoration: none; transition: all 0.2s; }
+    .plan-btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text-muted); }
+    .plan-btn-outline:hover { border-color: rgba(255,255,255,0.2); color: var(--text); }
+    .plan-btn-solid { background: var(--accent); border: 1px solid var(--accent); color: #fff; }
+    .plan-btn-solid:hover { background: var(--accent-dim); transform: translateY(-1px); box-shadow: 0 8px 20px rgba(224,74,40,0.3); }
 
-    .plan-btn {
-      display: block;
-      width: 100%;
-      padding: 0.85rem;
-      border-radius: 8px;
-      font-family: var(--font);
-      font-size: 0.9rem;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      text-align: center;
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-    .plan-btn-outline {
-      background: transparent;
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-    }
-    .plan-btn-outline:hover {
-      border-color: rgba(255,255,255,0.2);
-      color: var(--text);
-    }
-    .plan-btn-solid {
-      background: var(--accent);
-      border: 1px solid var(--accent);
-      color: #fff;
-    }
-    .plan-btn-solid:hover {
-      background: var(--accent-dim);
-      transform: translateY(-1px);
-      box-shadow: 0 8px 20px rgba(224,74,40,0.3);
-    }
-    .plan-btn-solid:active { transform: scale(0.98); }
-
-    /* ─── SOCIAL PROOF ─── */
-    .proof { background: var(--bg); }
-
-    .proof-layout {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 5rem;
-      align-items: start;
-      margin-top: 4rem;
-    }
-
-    .testimonials {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-    .testimonial-card {
-      background: var(--bg-2);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 1.75rem 2rem;
-      transition: border-color 0.2s;
-    }
+    /* TESTIMONIALS */
+    .proof { background: var(--bg-2); }
+    .proof-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 5rem; align-items: start; margin-top: 4rem; }
+    .testimonials { display: flex; flex-direction: column; gap: 1.5rem; }
+    .testimonial-card { background: var(--bg-3); border: 1px solid var(--border); border-radius: 14px; padding: 1.75rem 2rem; transition: border-color 0.2s; }
     .testimonial-card:hover { border-color: rgba(255,255,255,0.12); }
-    .testimonial-stars {
-      display: flex;
-      gap: 3px;
-      margin-bottom: 1rem;
-    }
+    .testimonial-stars { display: flex; gap: 3px; margin-bottom: 1rem; }
     .star { color: var(--accent); font-size: 14px; }
-    .testimonial-text {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      line-height: 1.7;
-      margin-bottom: 1.25rem;
-      font-style: italic;
-    }
-    .testimonial-author {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    .author-avatar {
-      width: 36px; height: 36px;
-      border-radius: 50%;
-      overflow: hidden;
-      background: var(--bg-3);
-      flex-shrink: 0;
-    }
+    .testimonial-text { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 1.25rem; font-style: italic; }
+    .testimonial-author { display: flex; align-items: center; gap: 0.75rem; }
+    .author-avatar { width: 36px; height: 36px; border-radius: 50%; overflow: hidden; background: var(--bg-3); flex-shrink: 0; }
     .author-avatar img { width: 100%; height: 100%; object-fit: cover; }
-    .author-name {
-      font-size: 0.875rem;
-      font-weight: 600;
-      color: var(--text);
-    }
-    .author-meta {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-    }
+    .author-name { font-size: 0.875rem; font-weight: 600; color: var(--text); }
+    .author-meta { font-size: 0.75rem; color: var(--text-muted); }
+    .proof-metrics { display: flex; flex-direction: column; gap: 1px; background: var(--border); border-radius: 14px; overflow: hidden; border: 1px solid var(--border); }
+    .metric-row { background: var(--bg-3); padding: 1.5rem 1.75rem; }
+    .metric-num { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.06em; color: var(--text); font-family: var(--mono); line-height: 1; }
+    .metric-label { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.3rem; line-height: 1.4; }
 
-    .proof-metrics {
-      display: flex;
-      flex-direction: column;
-      gap: 1px;
-      background: var(--border);
-      border-radius: 14px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-    }
-    .metric-row {
-      background: var(--bg-2);
-      padding: 1.5rem 1.75rem;
-    }
-    .metric-row:first-child { border-radius: 14px 14px 0 0; }
-    .metric-row:last-child { border-radius: 0 0 14px 14px; }
-    .metric-num {
-      font-size: 2.25rem;
-      font-weight: 800;
-      letter-spacing: -0.06em;
-      color: var(--text);
-      font-family: var(--mono);
-      line-height: 1;
-    }
-    .metric-label {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      margin-top: 0.3rem;
-      line-height: 1.4;
-    }
-
-    /* ─── LOCATIONS ─── */
-    .locations { background: var(--bg-2); }
-
-    .locations-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      margin-top: 4rem;
-    }
-    .location-card {
-      border-radius: 16px;
-      overflow: hidden;
-      position: relative;
-      aspect-ratio: 4/3;
-      cursor: pointer;
-    }
-    .location-card img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-      filter: grayscale(30%);
-    }
-    .location-card:hover img { transform: scale(1.05); }
-    .location-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(8,8,8,0.92) 0%, rgba(8,8,8,0.3) 50%, transparent 100%);
-    }
-    .location-info {
-      position: absolute;
-      bottom: 1.5rem;
-      left: 1.75rem;
-      right: 1.75rem;
-    }
-    .location-city {
-      font-size: 1.35rem;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      color: #fff;
-    }
-    .location-addr {
-      font-size: 0.78rem;
-      color: rgba(255,255,255,0.55);
-      margin-top: 0.2rem;
-    }
-    .location-tag {
-      display: inline-block;
-      background: var(--accent);
-      color: #fff;
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 0.2rem 0.6rem;
-      border-radius: 4px;
-      margin-top: 0.6rem;
-    }
-
-    /* ─── FAQ ─── */
+    /* FAQ */
     .faq { background: var(--bg); }
-
-    .faq-layout {
-      display: grid;
-      grid-template-columns: 5fr 7fr;
-      gap: 6rem;
-      align-items: start;
-      margin-top: 0;
-    }
-
-    .faq-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-    .faq-item {
-      border-bottom: 1px solid var(--border);
-    }
-    .faq-question {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      padding: 1.5rem 0;
-      cursor: pointer;
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--text);
-      user-select: none;
-      transition: color 0.2s;
-    }
+    .faq-layout { display: grid; grid-template-columns: 5fr 7fr; gap: 6rem; align-items: start; }
+    .faq-list { display: flex; flex-direction: column; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-question { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.4rem 0; cursor: pointer; font-size: 0.93rem; font-weight: 600; color: var(--text); user-select: none; transition: color 0.2s; }
     .faq-question:hover { color: var(--accent); }
-    .faq-chevron {
-      flex-shrink: 0;
-      width: 20px; height: 20px;
-      color: var(--text-muted);
-      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s;
-    }
-    .faq-item.open .faq-chevron {
-      transform: rotate(180deg);
-      color: var(--accent);
-    }
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    }
+    .faq-chevron { flex-shrink: 0; width: 18px; height: 18px; color: var(--text-muted); transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), color 0.2s; }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); color: var(--accent); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s cubic-bezier(0.16,1,0.3,1); }
     .faq-item.open .faq-answer { max-height: 300px; }
-    .faq-answer-inner {
-      padding-bottom: 1.5rem;
-      font-size: 0.875rem;
-      color: var(--text-muted);
-      line-height: 1.7;
-    }
+    .faq-answer-inner { padding-bottom: 1.5rem; font-size: 0.875rem; color: var(--text-muted); line-height: 1.7; }
 
-    /* ─── CTA BANNER ─── */
+    /* CTA */
     .cta-section { background: var(--bg); padding: 0 4rem 7rem; }
-    .cta-banner {
-      background: var(--accent);
-      border-radius: 20px;
-      padding: 4rem 5rem;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 3rem;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .cta-banner::before {
-      content: '';
-      position: absolute;
-      top: -60px; right: -60px;
-      width: 280px; height: 280px;
-      background: rgba(255,255,255,0.06);
-      border-radius: 50%;
-    }
-    .cta-banner::after {
-      content: '';
-      position: absolute;
-      bottom: -80px; left: 30%;
-      width: 200px; height: 200px;
-      background: rgba(255,255,255,0.04);
-      border-radius: 50%;
-    }
-    .cta-title {
-      font-size: clamp(1.75rem, 2.5vw, 2.5rem);
-      font-weight: 900;
-      letter-spacing: -0.04em;
-      color: #fff;
-      line-height: 1.1;
-    }
-    .cta-sub {
-      font-size: 0.95rem;
-      color: rgba(255,255,255,0.7);
-      margin-top: 0.75rem;
-    }
-    .cta-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      align-items: flex-end;
-      position: relative;
-      z-index: 1;
-    }
-    .btn-white {
-      background: #fff;
-      color: var(--accent);
-      padding: 0.85rem 1.85rem;
-      border-radius: 8px;
-      font-family: var(--font);
-      font-size: 0.95rem;
-      font-weight: 700;
-      text-decoration: none;
-      white-space: nowrap;
-      transition: all 0.2s;
-    }
-    .btn-white:hover {
-      background: #f0ede8;
-      transform: translateY(-2px);
-    }
-    .btn-white:active { transform: scale(0.98); }
-    .cta-note {
-      font-size: 0.75rem;
-      color: rgba(255,255,255,0.5);
-    }
+    .cta-banner { background: var(--accent); border-radius: 20px; padding: 4rem 5rem; display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: center; position: relative; overflow: hidden; }
+    .cta-banner::before { content:''; position:absolute; top:-60px; right:-60px; width:280px; height:280px; background:rgba(255,255,255,0.06); border-radius:50%; }
+    .cta-title { font-size: clamp(1.75rem, 2.5vw, 2.5rem); font-weight: 900; letter-spacing: -0.04em; color: #fff; line-height: 1.1; }
+    .cta-sub { font-size: 0.95rem; color: rgba(255,255,255,0.7); margin-top: 0.75rem; }
+    .cta-actions { display: flex; flex-direction: column; gap: 0.75rem; align-items: flex-end; position: relative; z-index: 1; }
+    .btn-white { background: #fff; color: var(--accent); padding: 0.85rem 1.85rem; border-radius: 8px; font-family: var(--font); font-size: 0.95rem; font-weight: 700; text-decoration: none; white-space: nowrap; transition: all 0.2s; }
+    .btn-white:hover { background: #f0ede8; transform: translateY(-2px); }
+    .cta-note { font-size: 0.75rem; color: rgba(255,255,255,0.5); }
 
-    /* ─── FOOTER ─── */
-    footer {
-      background: var(--bg-2);
-      border-top: 1px solid var(--border);
-      padding: 4rem 4rem 2.5rem;
-    }
-    .footer-grid {
-      max-width: 1320px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 4rem;
-      padding-bottom: 3rem;
-      border-bottom: 1px solid var(--border);
-    }
-    .footer-brand-name {
-      font-size: 1.35rem;
-      font-weight: 900;
-      letter-spacing: -0.04em;
-      color: var(--text);
-      margin-bottom: 1rem;
-    }
+    /* FOOTER */
+    footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 4rem 4rem 2.5rem; }
+    .footer-grid { max-width: 1320px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 4rem; padding-bottom: 3rem; border-bottom: 1px solid var(--border); }
+    .footer-brand-name { font-size: 1.35rem; font-weight: 900; letter-spacing: -0.04em; color: var(--text); margin-bottom: 1rem; }
     .footer-brand-name span { color: var(--accent); }
-    .footer-brand-desc {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      line-height: 1.65;
-      max-width: 30ch;
-      margin-bottom: 1.75rem;
-    }
-    .footer-socials {
-      display: flex;
-      gap: 0.75rem;
-    }
-    .social-link {
-      width: 36px; height: 36px;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: border-color 0.2s, color 0.2s;
-    }
+    .footer-brand-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.65; max-width: 30ch; margin-bottom: 1.75rem; }
+    .footer-socials { display: flex; gap: 0.75rem; }
+    .social-link { width: 36px; height: 36px; border-radius: 8px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--text-muted); text-decoration: none; transition: border-color 0.2s, color 0.2s; }
     .social-link:hover { border-color: var(--accent); color: var(--accent); }
-
-    .footer-col-title {
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 1.25rem;
-    }
-    .footer-links {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.7rem;
-    }
-    .footer-links a {
-      font-size: 0.875rem;
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
+    .footer-col-title { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1.25rem; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+    .footer-links a { font-size: 0.875rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
     .footer-links a:hover { color: var(--text); }
+    .footer-bottom { max-width: 1320px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding-top: 2rem; font-size: 0.8rem; color: var(--text-subtle); }
 
-    .footer-bottom {
-      max-width: 1320px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-top: 2rem;
-      font-size: 0.8rem;
-      color: var(--text-subtle);
-    }
-
-    /* ─── SEDE MODAL ─── */
-    .modal-backdrop {
-      position: fixed;
-      inset: 0;
-      z-index: 200;
-      background: rgba(0,0,0,0);
-      backdrop-filter: blur(0px);
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      pointer-events: none;
-      transition: background 0.35s ease, backdrop-filter 0.35s ease;
-    }
-    .modal-backdrop.open {
-      background: rgba(0,0,0,0.75);
-      backdrop-filter: blur(8px);
-      pointer-events: all;
-    }
-
-    .modal-sheet {
-      background: var(--bg-2);
-      border: 1px solid var(--border);
-      border-radius: 24px 24px 0 0;
-      width: 100%;
-      max-width: 860px;
-      max-height: 90dvh;
-      overflow-y: auto;
-      transform: translateY(100%);
-      transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-      position: relative;
-    }
-    .modal-backdrop.open .modal-sheet {
-      transform: translateY(0);
-    }
-
-    .modal-drag-handle {
-      width: 40px; height: 4px;
-      background: var(--border);
-      border-radius: 2px;
-      margin: 1rem auto 0;
-    }
-
-    .modal-hero {
-      width: 100%;
-      height: 260px;
-      object-fit: cover;
-      object-position: center 30%;
-      display: block;
-      margin-top: 1rem;
-    }
-
-    .modal-body {
-      padding: 2rem 2.5rem 3rem;
-    }
-
-    .modal-header {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 1.75rem;
-    }
-
-    .modal-city {
-      font-size: 2rem;
-      font-weight: 900;
-      letter-spacing: -0.05em;
-      color: var(--text);
-      line-height: 1;
-    }
-    .modal-tag {
-      display: inline-block;
-      background: rgba(224,74,40,0.12);
-      border: 1px solid rgba(224,74,40,0.3);
-      color: var(--accent);
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 0.25rem 0.7rem;
-      border-radius: 100px;
-      margin-top: 0.5rem;
-    }
-    .modal-close {
-      width: 36px; height: 36px;
-      border-radius: 50%;
-      border: 1px solid var(--border);
-      background: var(--bg-3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      color: var(--text-muted);
-      flex-shrink: 0;
-      transition: border-color 0.2s, color 0.2s;
-    }
+    /* GYM DETAIL MODAL */
+    .modal-backdrop { position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,0); backdrop-filter: blur(0px); display: flex; align-items: flex-end; justify-content: center; pointer-events: none; transition: background 0.35s ease, backdrop-filter 0.35s ease; }
+    .modal-backdrop.open { background: rgba(0,0,0,0.78); backdrop-filter: blur(8px); pointer-events: all; }
+    .modal-sheet { background: var(--bg-2); border: 1px solid var(--border); border-radius: 24px 24px 0 0; width: 100%; max-width: 900px; max-height: 92dvh; overflow-y: auto; transform: translateY(100%); transition: transform 0.45s cubic-bezier(0.16,1,0.3,1); position: relative; }
+    .modal-backdrop.open .modal-sheet { transform: translateY(0); }
+    .modal-drag-handle { width: 40px; height: 4px; background: var(--border); border-radius: 2px; margin: 1rem auto 0; }
+    .modal-hero-img { width: 100%; height: 240px; object-fit: cover; display: block; margin-top: 1rem; }
+    .modal-body { padding: 2rem 2.5rem 3rem; }
+    .modal-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 1.75rem; }
+    .modal-gym-name { font-size: 1.9rem; font-weight: 900; letter-spacing: -0.05em; color: var(--text); line-height: 1; }
+    .modal-gym-type { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.35rem; }
+    .modal-tag { display: inline-block; background: rgba(224,74,40,0.12); border: 1px solid rgba(224,74,40,0.3); color: var(--accent); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.25rem 0.7rem; border-radius: 100px; margin-top: 0.5rem; }
+    .modal-close { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--border); background: var(--bg-3); display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--text-muted); flex-shrink: 0; transition: border-color 0.2s, color 0.2s; }
     .modal-close:hover { border-color: rgba(255,255,255,0.2); color: var(--text); }
-
-    .modal-info-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      background: var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-      margin-bottom: 2rem;
-    }
-    .modal-info-cell {
-      background: var(--bg-3);
-      padding: 1.1rem 1.35rem;
-    }
-    .modal-info-label {
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 0.35rem;
-    }
-    .modal-info-value {
-      font-size: 0.9rem;
-      color: var(--text);
-      font-weight: 500;
-      line-height: 1.4;
-    }
-    .modal-info-value.accent { color: var(--accent); font-family: var(--mono); font-weight: 600; }
-
-    .modal-services-title {
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 1rem;
-    }
-    .modal-services {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 2rem;
-    }
-    .service-chip {
-      background: var(--bg-3);
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      padding: 0.35rem 0.85rem;
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      font-weight: 500;
-    }
-
-    .modal-footer-actions {
-      display: flex;
-      gap: 1rem;
-    }
-    .modal-footer-actions .btn-primary { flex: 1; justify-content: center; }
-    .modal-map-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.85rem 1.5rem;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      background: transparent;
-      color: var(--text-muted);
-      font-family: var(--font);
-      font-size: 0.9rem;
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: none;
-      transition: border-color 0.2s, color 0.2s;
-    }
+    .modal-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 2rem; }
+    .modal-info-cell { background: var(--bg-3); padding: 1.1rem 1.35rem; }
+    .modal-info-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.35rem; }
+    .modal-info-value { font-size: 0.88rem; color: var(--text); font-weight: 500; line-height: 1.4; }
+    .modal-info-value.mono { font-family: var(--mono); color: var(--accent); font-weight: 600; }
+    .modal-section-title { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.85rem; }
+    .modal-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
+    .modal-chip { background: var(--bg-3); border: 1px solid var(--border); border-radius: 100px; padding: 0.35rem 0.85rem; font-size: 0.78rem; color: var(--text-muted); font-weight: 500; }
+    .modal-actions { display: flex; gap: 1rem; }
+    .modal-actions .btn-primary { flex: 1; justify-content: center; }
+    .modal-map-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1.5rem; border-radius: 8px; border: 1px solid var(--border); background: transparent; color: var(--text-muted); font-family: var(--font); font-size: 0.9rem; font-weight: 600; cursor: pointer; text-decoration: none; transition: border-color 0.2s, color 0.2s; }
     .modal-map-btn:hover { border-color: rgba(255,255,255,0.2); color: var(--text); }
+    .plan-compat { display: flex; gap: 0.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .plan-compat-chip { font-size: 0.72rem; font-weight: 700; padding: 0.3rem 0.75rem; border-radius: 6px; }
+    .compat-starter { background: rgba(96,165,250,0.1); color: #60a5fa; border: 1px solid rgba(96,165,250,0.2); }
+    .compat-pro { background: rgba(224,74,40,0.1); color: var(--accent); border: 1px solid rgba(224,74,40,0.25); }
+    .compat-elite { background: rgba(167,139,250,0.1); color: #a78bfa; border: 1px solid rgba(167,139,250,0.2); }
 
-    @media (max-width: 640px) {
-      .modal-sheet { border-radius: 20px 20px 0 0; max-height: 95dvh; }
-      .modal-body { padding: 1.5rem 1.25rem 2.5rem; }
-      .modal-hero { height: 200px; }
-      .modal-info-grid { grid-template-columns: 1fr; }
-      .modal-footer-actions { flex-direction: column; }
-    }
-
-    /* ─── ANIMATIONS ─── */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-    }
+    /* FADE-UP */
+    .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.65s cubic-bezier(0.16,1,0.3,1), transform 0.65s cubic-bezier(0.16,1,0.3,1); }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
     .fade-up-delay-1 { transition-delay: 0.1s; }
     .fade-up-delay-2 { transition-delay: 0.2s; }
     .fade-up-delay-3 { transition-delay: 0.3s; }
     .fade-up-delay-4 { transition-delay: 0.4s; }
 
-    /* ─── MOBILE NAV MENU ─── */
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      inset: 0;
-      top: 72px;
-      background: rgba(8,8,8,0.98);
-      backdrop-filter: blur(20px);
-      z-index: 99;
-      flex-direction: column;
-      padding: 2rem 4rem;
-      gap: 1.5rem;
-    }
+    /* MOBILE MENU */
+    .mobile-menu { display: none; position: fixed; inset: 0; top: 72px; background: rgba(8,8,8,0.98); backdrop-filter: blur(20px); z-index: 99; flex-direction: column; padding: 2rem 2rem; gap: 0; }
     .mobile-menu.open { display: flex; }
-    .mobile-menu a {
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      text-decoration: none;
-      padding: 0.75rem 0;
-      border-bottom: 1px solid var(--border);
-      transition: color 0.2s;
-    }
+    .mobile-menu a { font-size: 1.15rem; font-weight: 600; color: var(--text-muted); text-decoration: none; padding: 1rem 0; border-bottom: 1px solid var(--border); transition: color 0.2s; }
     .mobile-menu a:hover { color: var(--text); }
 
-    /* ─── RESPONSIVE ─── */
+    /* RESPONSIVE */
+    @media (max-width: 1100px) {
+      .gyms-grid { grid-template-columns: 1fr 1fr; }
+    }
     @media (max-width: 1024px) {
       nav { padding: 1.25rem 2rem; }
       .nav-links { display: none; }
       .hamburger { display: flex; }
-
       section { padding: 5rem 2rem; }
       .cta-section { padding: 0 2rem 5rem; }
       footer { padding: 3rem 2rem 2rem; }
-
       .hero { grid-template-columns: 1fr; }
       .hero-left { padding: 8rem 2rem 4rem; }
       .hero-right { display: none; }
-      .hero-title { font-size: clamp(2.8rem, 8vw, 4rem); }
-
+      .how-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .network-header { grid-template-columns: 1fr; gap: 1.5rem; }
       .plans-header { grid-template-columns: 1fr; gap: 1.5rem; }
-      .plans-grid { grid-template-columns: 1fr; max-width: 420px; }
-
+      .plans-grid { grid-template-columns: 1fr; max-width: 440px; }
       .proof-layout { grid-template-columns: 1fr; gap: 3rem; }
-      .locations-grid { grid-template-columns: 1fr 1fr; }
       .faq-layout { grid-template-columns: 1fr; gap: 2.5rem; }
-
       .cta-banner { grid-template-columns: 1fr; text-align: center; padding: 3rem 2rem; }
       .cta-actions { align-items: center; }
-
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
     }
-
     @media (max-width: 640px) {
       .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
-      .features-grid { grid-template-columns: 1fr; }
-      .feature-item:nth-child(odd) { border-right: none; }
-      .feature-item:nth-last-child(-n+2) { border-bottom: 1px solid var(--border); }
-      .feature-item:last-child { border-bottom: none; }
-      .locations-grid { grid-template-columns: 1fr; }
+      .gyms-grid { grid-template-columns: 1fr; }
+      .modal-info-grid { grid-template-columns: 1fr; }
+      .modal-body { padding: 1.5rem 1.25rem 2.5rem; }
+      .modal-actions { flex-direction: column; }
       .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
       .footer-bottom { flex-direction: column; gap: 0.75rem; text-align: center; }
-      .mobile-menu { padding: 1.5rem 2rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav id="navbar">
-    <a href="#" class="nav-logo">GYM<span>BRO</span></a>
-    <ul class="nav-links">
-      <li><a href="#caracteristicas">Instalaciones</a></li>
-      <li><a href="#membresias">Membresías</a></li>
-      <li><a href="#sedes">Sedes</a></li>
-      <li><a href="#faq">FAQ</a></li>
-      <li><a href="#membresias" class="nav-cta">Inscríbete</a></li>
-    </ul>
-    <button class="hamburger" id="hamburger" aria-label="Menú">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">GYM<span>BRO</span></a>
+  <ul class="nav-links">
+    <li><a href="#como-funciona">Cómo funciona</a></li>
+    <li><a href="#gimnasios">Gimnasios</a></li>
+    <li><a href="#planes">Planes</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#planes" class="nav-cta">Suscribirse</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
 
-  <!-- MOBILE MENU -->
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="#caracteristicas" onclick="closeMenu()">Instalaciones</a>
-    <a href="#membresias" onclick="closeMenu()">Membresías</a>
-    <a href="#sedes" onclick="closeMenu()">Sedes</a>
-    <a href="#faq" onclick="closeMenu()">FAQ</a>
-    <a href="#membresias" onclick="closeMenu()" style="color:var(--accent);font-weight:700;">Inscríbete Ahora</a>
-  </div>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#como-funciona" onclick="closeMenu()">Cómo funciona</a>
+  <a href="#gimnasios" onclick="closeMenu()">Gimnasios</a>
+  <a href="#planes" onclick="closeMenu()">Planes</a>
+  <a href="#faq" onclick="closeMenu()">FAQ</a>
+  <a href="#planes" onclick="closeMenu()" style="color:var(--accent);font-weight:700;">Suscribirse</a>
+</div>
 
-  <!-- HERO -->
-  <section class="hero" style="padding:0;">
-    <div class="hero-left">
-      <div class="hero-badge">
-        <span class="hero-badge-dot"></span>
-        Abierto en Quito, Guayaquil y Cuenca
-      </div>
-      <h1 class="hero-title">
-        Transforma tu<br>
-        <span class="accent">rendimiento</span><br>
-        <span class="line-2">sin límites.</span>
-      </h1>
-      <p class="hero-sub">
-        Infraestructura de alto rendimiento, entrenadores certificados y programas estructurados para quienes toman en serio su evolución física.
-      </p>
-      <div class="hero-actions">
-        <a href="#membresias" class="btn-primary">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          Ver Membresías
-        </a>
-        <a href="#caracteristicas" class="btn-ghost">
-          Conocer más
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-      </div>
-      <div class="hero-stats">
-        <div>
-          <div class="hero-stat-num">14K+</div>
-          <div class="hero-stat-label">Miembros activos</div>
-        </div>
-        <div>
-          <div class="hero-stat-num">3</div>
-          <div class="hero-stat-label">Ciudades</div>
-        </div>
-        <div>
-          <div class="hero-stat-num">97.3%</div>
-          <div class="hero-stat-label">Satisfacción</div>
-        </div>
-      </div>
+<!-- HERO -->
+<section class="hero" style="padding:0;">
+  <div class="hero-left">
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      Quito · Guayaquil · Cuenca
     </div>
-    <div class="hero-right">
-      <img
-        src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&q=80"
-        alt="Instalaciones Gymbro"
-        loading="eager"
-      />
-      <div class="hero-tag">
-        <div class="hero-tag-label">Membresía desde</div>
-        <div class="hero-tag-value"><sup>$</sup>22</div>
-        <div class="hero-tag-sub">por mes · sin contratos</div>
-      </div>
+    <h1 class="hero-title">
+      Un pase.<br>
+      <span class="accent">40+ gimnasios.</span><br>
+      <span class="line-muted">Sin ataduras.</span>
+    </h1>
+    <p class="hero-sub">
+      Gymbro es la suscripción única que te da acceso a la red más grande de gimnasios en Ecuador. CrossFit, yoga, box, funcional y más — donde quieras, cuando quieras.
+    </p>
+    <div class="hero-actions">
+      <a href="#planes" class="btn-primary">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        Ver planes desde $29
+      </a>
+      <a href="#gimnasios" class="btn-ghost">
+        Explorar gimnasios
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
     </div>
-  </section>
-
-  <!-- TICKER -->
-  <div class="ticker" aria-hidden="true">
-    <div class="ticker-inner">
-      <span class="ticker-item">Pesas Libres</span>
-      <span class="ticker-sep">·</span>
-      <span class="ticker-item">Cardio de Alta Intensidad</span>
-      <span class="ticker-sep">·</span>
-      <span class="ticker-item">Clases Funcionales</span>
-      <span class="ticker-sep">·</span>
-      <span class="ticker-item">Entrenamiento Personal</span>
-      <span class="ticker-sep">·</span>
-      <span class="ticker-item">Nutrición Deportiva</span>
-      <span class="ticker-sep">·</span>
-      <span class="ticker-item">Zonas de Recuperación</span>
-      <span class="ticker-sep">·</span>
-      <span class="ticker-item">Open 5am — 11pm</span>
-      <span class="ticker-sep">·</span>
-      <span class="ticker-item">Pesas Libres</span>
-      <span class="ticker-sep">·</span>
-      <span class="ticker-item">Cardio de Alta Intensidad</span>
-      <span class="ticker-sep">·</span>
-      <span class="ticker-item">Clases Funcionales</span>
-      <span class="ticker-sep">·</span>
-      <span class="ticker-item">Entrenamiento Personal</span>
-      <span class="ticker-sep">·</span>
-      <span class="ticker-item">Nutrición Deportiva</span>
-      <span class="ticker-sep">·</span>
-      <span class="ticker-item">Zonas de Recuperación</span>
-      <span class="ticker-sep">·</span>
-      <span class="ticker-item">Open 5am — 11pm</span>
-    </div>
-  </div>
-
-  <!-- FEATURES -->
-  <section class="features" id="caracteristicas">
-    <div class="container">
-      <span class="section-label fade-up">Instalaciones</span>
-      <h2 class="section-title fade-up fade-up-delay-1">Diseñado para quienes<br>no se conforman.</h2>
-      <p class="section-sub fade-up fade-up-delay-2">Más de 2.400 m² de espacio equipado con tecnología de punta, renovado en 2024.</p>
-
-      <div class="features-grid fade-up fade-up-delay-3">
-        <div class="feature-item">
-          <div class="feature-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 5v14M18 5v14M3 9h18M3 15h18"/></svg>
-          </div>
-          <div class="feature-title">Zona de Pesas Libres</div>
-          <p class="feature-desc">Equipamiento Rogue y Hammer Strength. Plataformas olímpicas con piso de caucho importado.</p>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-          </div>
-          <div class="feature-title">Acceso 5am — 11pm</div>
-          <p class="feature-desc">Horarios extendidos todos los días del año. Acceso con tarjeta sin cola ni esperas.</p>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          </div>
-          <div class="feature-title">Clases Grupales Diarias</div>
-          <p class="feature-desc">+28 clases semanales: CrossFit, Spinning, Yoga, Pilates, HIIT y más. Incluidas en todos los planes.</p>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-          </div>
-          <div class="feature-title">Seguimiento Biométrico</div>
-          <p class="feature-desc">Análisis de composición corporal, medición de VO2 max y reportes de progreso mensuales.</p>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
-          <div class="feature-title">Vestuarios Premium</div>
-          <p class="feature-desc">Lockers digitales, duchas con agua caliente, sauna seco y zona de recuperación con crioterapia.</p>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-          </div>
-          <div class="feature-title">App Gymbro Pro</div>
-          <p class="feature-desc">Reserva clases, consulta tu historial de entrenamientos y gestiona tu membresía desde el móvil.</p>
-        </div>
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-num">40+</div>
+        <div class="hero-stat-label">Gimnasios partner</div>
       </div>
-    </div>
-  </section>
-
-  <!-- MEMBERSHIP PLANS -->
-  <section class="plans" id="membresias">
-    <div class="container">
-      <div class="plans-header">
-        <div>
-          <span class="section-label fade-up">Membresías</span>
-          <h2 class="section-title fade-up fade-up-delay-1">Elige tu plan.<br>Sin contratos.</h2>
-        </div>
-        <p class="section-sub fade-up fade-up-delay-2">
-          Todos los planes incluyen acceso completo a instalaciones y clases grupales. Cancela cuando quieras.
-        </p>
+      <div>
+        <div class="hero-stat-num">3</div>
+        <div class="hero-stat-label">Ciudades</div>
       </div>
-
-      <div class="plans-grid">
-        <!-- ESSENTIAL -->
-        <div class="plan-card fade-up">
-          <div class="plan-name">Esencial</div>
-          <div class="plan-price"><sup>$</sup>22</div>
-          <div class="plan-price-period">por mes · facturación mensual</div>
-          <div class="plan-divider"></div>
-          <ul class="plan-features">
-            <li class="active">
-              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
-              Acceso a la sala principal
-            </li>
-            <li class="active">
-              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
-              Clases grupales incluidas
-            </li>
-            <li class="active">
-              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
-              1 sede a elección
-            </li>
-            <li class="active">
-              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
-              App Gymbro básica
-            </li>
-            <li>
-              <svg class="x-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
-              Acceso multi-sede
-            </li>
-            <li>
-              <svg class="x-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
-              Análisis biométrico
-            </li>
-            <li>
-              <svg class="x-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
-              Sesiones de PT
-            </li>
-          </ul>
-          <a href="#" class="plan-btn plan-btn-outline">Comenzar ahora</a>
-        </div>
-
-        <!-- PRO (FEATURED) -->
-        <div class="plan-card featured fade-up fade-up-delay-1">
-          <div class="plan-badge">Más popular</div>
-          <div class="plan-name">Pro</div>
-          <div class="plan-price"><sup>$</sup>47</div>
-          <div class="plan-price-period">por mes · facturación mensual</div>
-          <div class="plan-divider"></div>
-          <ul class="plan-features">
-            <li class="active">
-              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
-              Todo lo de Esencial
-            </li>
-            <li class="active">
-              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
-              Acceso multi-sede (3 ciudades)
-            </li>
-            <li class="active">
-              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
-              Análisis biométrico mensual
-            </li>
-            <li class="active">
-              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
-              Sauna y zona de recuperación
-            </li>
-            <li class="active">
-              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
-              App Gymbro Pro completa
-            </li>
-            <li class="active">
-              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
-              2 sesiones PT al mes
-            </li>
-            <li>
-              <svg class="x-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
-              Plan nutricional personalizado
-            </li>
-          </ul>
-          <a href="#" class="plan-btn plan-btn-solid">Comenzar ahora</a>
-        </div>
-
-        <!-- ELITE -->
-        <div class="plan-card fade-up fade-up-delay-2">
-          <div class="plan-name">Élite</div>
-          <div class="plan-price"><sup>$</sup>78</div>
-          <div class="plan-price-period">por mes · facturación mensual</div>
-          <div class="plan-divider"></div>
-          <ul class="plan-features">
-            <li class="active">
-              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
-              Todo lo de Pro
-            </li>
-            <li class="active">
-              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
-              PT ilimitado con entrenador asignado
-            </li>
-            <li class="active">
-              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
-              Plan nutricional personalizado
-            </li>
-            <li class="active">
-              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
-              Crioterapia y recuperación activa
-            </li>
-            <li class="active">
-              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
-              Reportes semanales de progreso
-            </li>
-            <li class="active">
-              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
-              Locker personal permanente
-            </li>
-            <li class="active">
-              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
-              Acceso prioritario a clases
-            </li>
-          </ul>
-          <a href="#" class="plan-btn plan-btn-outline">Comenzar ahora</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SOCIAL PROOF -->
-  <section class="proof" id="prueba">
-    <div class="container">
-      <span class="section-label fade-up">Testimonios</span>
-      <h2 class="section-title fade-up fade-up-delay-1">Lo que dicen<br>nuestros miembros.</h2>
-
-      <div class="proof-layout">
-        <div class="testimonials">
-          <div class="testimonial-card fade-up">
-            <div class="testimonial-stars">
-              <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-            </div>
-            <p class="testimonial-text">"Llevaba 3 años buscando un gimnasio en Quito que tuviera equipamiento serio. Gymbro tiene plataformas olímpicas de verdad, entrenadores que saben lo que hacen y las clases son brutales. Bajé 14kg en 5 meses."</p>
-            <div class="testimonial-author">
-              <div class="author-avatar">
-                <img src="https://picsum.photos/seed/marcos_quito/80/80" alt="Marcos Andrade" />
-              </div>
-              <div>
-                <div class="author-name">Marcos Andrade</div>
-                <div class="author-meta">Miembro Pro · Quito, 11 meses</div>
-              </div>
-            </div>
-          </div>
-          <div class="testimonial-card fade-up fade-up-delay-1">
-            <div class="testimonial-stars">
-              <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-            </div>
-            <p class="testimonial-text">"El acceso multi-sede me cambió la vida. Viajo seguido entre Guayaquil y Quito por trabajo, y con el plan Pro puedo entrenar en cualquier sede sin interrumpir mi rutina. La app para reservar clases es muy intuitiva."</p>
-            <div class="testimonial-author">
-              <div class="author-avatar">
-                <img src="https://picsum.photos/seed/daniela_gye/80/80" alt="Daniela Proaño" />
-              </div>
-              <div>
-                <div class="author-name">Daniela Proaño</div>
-                <div class="author-meta">Miembro Pro · Guayaquil, 7 meses</div>
-              </div>
-            </div>
-          </div>
-          <div class="testimonial-card fade-up fade-up-delay-2">
-            <div class="testimonial-stars">
-              <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-            </div>
-            <p class="testimonial-text">"El plan Élite con PT incluido vale completamente su precio. Mi entrenador Sebastián diseñó un programa específico para mis metas y tenemos seguimiento semanal. En 4 meses logré más que en 2 años entrenando solo."</p>
-            <div class="testimonial-author">
-              <div class="author-avatar">
-                <img src="https://picsum.photos/seed/rodrigo_cuenca/80/80" alt="Rodrigo Vásconez" />
-              </div>
-              <div>
-                <div class="author-name">Rodrigo Vásconez</div>
-                <div class="author-meta">Miembro Élite · Cuenca, 4 meses</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="proof-metrics fade-up fade-up-delay-1">
-          <div class="metric-row">
-            <div class="metric-num">14,271</div>
-            <div class="metric-label">Miembros activos en Ecuador</div>
-          </div>
-          <div class="metric-row">
-            <div class="metric-num">97.3%</div>
-            <div class="metric-label">Tasa de satisfacción general</div>
-          </div>
-          <div class="metric-row">
-            <div class="metric-num">8.4</div>
-            <div class="metric-label">Promedio de visitas por mes</div>
-          </div>
-          <div class="metric-row">
-            <div class="metric-num">2,400m²</div>
-            <div class="metric-label">Superficie por sede</div>
-          </div>
-          <div class="metric-row">
-            <div class="metric-num">28+</div>
-            <div class="metric-label">Clases grupales por semana</div>
-          </div>
-          <div class="metric-row">
-            <div class="metric-num">5</div>
-            <div class="metric-label">Años de operación ininterrumpida</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- LOCATIONS -->
-  <section class="locations" id="sedes">
-    <div class="container">
-      <span class="section-label fade-up">Sedes</span>
-      <h2 class="section-title fade-up fade-up-delay-1">Tres ciudades.<br>Un solo acceso.</h2>
-
-      <div class="locations-grid">
-        <div class="location-card fade-up" onclick="openSede('quito')" role="button" tabindex="0" aria-label="Ver detalles Quito">
-          <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=800&q=80" alt="Sede Quito" />
-          <div class="location-overlay"></div>
-          <div class="location-info">
-            <div class="location-city">Quito</div>
-            <div class="location-addr">Av. República del Salvador N35-65 y Suecia, Quito 170503</div>
-            <span class="location-tag">Sede principal</span>
-          </div>
-          <div style="position:absolute;top:1.1rem;right:1.1rem;background:rgba(8,8,8,0.65);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:0.4rem 0.65rem;display:flex;align-items:center;gap:0.35rem;font-size:0.7rem;color:rgba(255,255,255,0.7);font-weight:600;letter-spacing:0.04em;z-index:2;">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
-            Ver detalles
-          </div>
-        </div>
-        <div class="location-card fade-up fade-up-delay-1" onclick="openSede('guayaquil')" role="button" tabindex="0" aria-label="Ver detalles Guayaquil">
-          <img src="https://images.unsplash.com/photo-1593079831268-3381b0db4a77?w=800&q=80" alt="Sede Guayaquil" />
-          <div class="location-overlay"></div>
-          <div class="location-info">
-            <div class="location-city">Guayaquil</div>
-            <div class="location-addr">Av. Francisco de Orellana y Joaquín Orrantia, Guayaquil 090505</div>
-            <span class="location-tag">Abierta 24h</span>
-          </div>
-          <div style="position:absolute;top:1.1rem;right:1.1rem;background:rgba(8,8,8,0.65);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:0.4rem 0.65rem;display:flex;align-items:center;gap:0.35rem;font-size:0.7rem;color:rgba(255,255,255,0.7);font-weight:600;letter-spacing:0.04em;z-index:2;">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
-            Ver detalles
-          </div>
-        </div>
-        <div class="location-card fade-up fade-up-delay-2" onclick="openSede('cuenca')" role="button" tabindex="0" aria-label="Ver detalles Cuenca">
-          <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=800&q=80" alt="Sede Cuenca" />
-          <div class="location-overlay"></div>
-          <div class="location-info">
-            <div class="location-city">Cuenca</div>
-            <div class="location-addr">Av. Solano 10-43 y Remigio Crespo, Cuenca 010204</div>
-            <span class="location-tag">Nueva sede 2024</span>
-          </div>
-          <div style="position:absolute;top:1.1rem;right:1.1rem;background:rgba(8,8,8,0.65);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:0.4rem 0.65rem;display:flex;align-items:center;gap:0.35rem;font-size:0.7rem;color:rgba(255,255,255,0.7);font-weight:600;letter-spacing:0.04em;z-index:2;">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
-            Ver detalles
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="faq" id="faq">
-    <div class="container">
-      <div class="faq-layout">
-        <div>
-          <span class="section-label fade-up">FAQ</span>
-          <h2 class="section-title fade-up fade-up-delay-1">Preguntas<br>frecuentes.</h2>
-          <p class="section-sub fade-up fade-up-delay-2" style="margin-top:1rem;">
-            Si no encuentras lo que buscas, escríbenos en WhatsApp o visita cualquier sede.
-          </p>
-          <a href="#" class="btn-primary fade-up fade-up-delay-3" style="margin-top:2rem; display:inline-flex;">
-            Contactar soporte
-          </a>
-        </div>
-
-        <div class="faq-list fade-up fade-up-delay-1">
-          <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
-              ¿Hay contrato de permanencia mínima?
-              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-            </div>
-            <div class="faq-answer">
-              <div class="faq-answer-inner">No. Todos nuestros planes son mes a mes sin ningún tipo de contrato o penalización por cancelación. Puedes pausar o cancelar tu membresía desde la app con un clic, con efecto al final del periodo facturado.</div>
-            </div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
-              ¿Puedo congelar mi membresía si viajo?
-              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-            </div>
-            <div class="faq-answer">
-              <div class="faq-answer-inner">Sí. Los planes Pro y Élite permiten congelar la membresía hasta 30 días por año sin costo adicional. El plan Esencial puede congelar hasta 15 días. La solicitud se gestiona desde la app.</div>
-            </div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
-              ¿Qué métodos de pago aceptan?
-              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-            </div>
-            <div class="faq-answer">
-              <div class="faq-answer-inner">Aceptamos tarjetas de crédito y débito (Visa, Mastercard, Diners Club), transferencias bancarias a Banco Pichincha y Banco Guayaquil, y pagos en efectivo directamente en sede. El cobro se realiza automáticamente el mismo día de inscripción cada mes.</div>
-            </div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
-              ¿El acceso a clases tiene costo adicional?
-              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-            </div>
-            <div class="faq-answer">
-              <div class="faq-answer-inner">No. Todas las clases grupales están incluidas en los tres planes sin costo extra: Spinning, HIIT, Yoga, Pilates, CrossFit, Functional Training y más. Solo necesitas reservar tu cupo desde la app con anticipación.</div>
-            </div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
-              ¿Puedo llevar a un invitado?
-              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-            </div>
-            <div class="faq-answer">
-              <div class="faq-answer-inner">Los planes Pro y Élite incluyen 2 pases de invitado por mes a un costo de $3 por visita adicional. El plan Esencial permite invitados a $5 por visita. Los pases no son acumulables.</div>
-            </div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
-              ¿Ofrecen planes corporativos para empresas?
-              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-            </div>
-            <div class="faq-answer">
-              <div class="faq-answer-inner">Sí. Contamos con planes corporativos para equipos desde 5 personas con descuentos de hasta el 35%. Incluye facturación consolidada y reporte de uso por empleado. Contáctanos en corporativo@gymbro.ec para cotizar.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA BANNER -->
-  <div class="cta-section">
-    <div class="container">
-      <div class="cta-banner fade-up">
-        <div>
-          <h2 class="cta-title">Tu primer mes<br>por $1. Sin excusas.</h2>
-          <p class="cta-sub">Oferta válida para nuevos miembros. Cancela antes del mes 2 sin ningún costo.</p>
-        </div>
-        <div class="cta-actions">
-          <a href="#membresias" class="btn-white">Activar oferta ahora</a>
-          <span class="cta-note">Disponible en las 3 sedes · Ecuador</span>
-        </div>
+      <div>
+        <div class="hero-stat-num">9,800+</div>
+        <div class="hero-stat-label">Suscriptores activos</div>
       </div>
     </div>
   </div>
+  <div class="hero-right">
+    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&q=80" alt="Red de gimnasios Gymbro" />
+    <div class="hero-float">
+      <div class="hero-float-label">Acceso hoy en</div>
+      <div class="hero-float-num">43</div>
+      <div class="hero-float-sub">sedes activas en Ecuador</div>
+    </div>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-grid">
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-inner">
+    <span class="ticker-item">CrossFit</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Box & Kickboxing</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Yoga & Pilates</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Functional Training</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Spinning</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Pesas Libres</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Calistenia</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">HIIT</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Natación</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Zumba</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">CrossFit</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Box & Kickboxing</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Yoga & Pilates</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Functional Training</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Spinning</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Pesas Libres</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Calistenia</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">HIIT</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Natación</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Zumba</span>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section id="como-funciona" style="background:var(--bg);">
+  <div class="container">
+    <div class="how-grid">
       <div>
-        <div class="footer-brand-name">GYM<span>BRO</span></div>
-        <p class="footer-brand-desc">Infraestructura de alto rendimiento para quienes toman en serio su evolución física. Ecuador, desde 2019.</p>
-        <div class="footer-socials">
-          <a href="#" class="social-link" aria-label="Instagram">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
-          </a>
-          <a href="#" class="social-link" aria-label="TikTok">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
-          </a>
-          <a href="#" class="social-link" aria-label="YouTube">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-1.96C18.88 4 12 4 12 4s-6.88 0-8.6.46A2.78 2.78 0 0 0 1.46 6.42C1 8.15 1 12 1 12s0 3.85.46 5.58a2.78 2.78 0 0 0 1.94 1.96C5.12 20 12 20 12 20s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-1.96C23 15.85 23 12 23 12s0-3.85-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
-          </a>
-          <a href="#" class="social-link" aria-label="Facebook">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-          </a>
+        <span class="section-label fade-up">Cómo funciona</span>
+        <h2 class="section-title fade-up fade-up-delay-1">Tres pasos.<br>Acceso total.</h2>
+        <div class="steps">
+          <div class="step fade-up fade-up-delay-1">
+            <div class="step-num">01</div>
+            <div>
+              <div class="step-title">Elige tu plan</div>
+              <p class="step-desc">Selecciona cuántas visitas necesitas al mes. Starter, Pro o Elite. Sin contratos, cancela cuando quieras.</p>
+            </div>
+          </div>
+          <div class="step fade-up fade-up-delay-2">
+            <div class="step-num">02</div>
+            <div>
+              <div class="step-title">Explora la red</div>
+              <p class="step-desc">Accede al directorio con más de 40 gimnasios en Quito, Guayaquil y Cuenca. Filtra por ciudad, disciplina y horario.</p>
+            </div>
+          </div>
+          <div class="step fade-up fade-up-delay-3">
+            <div class="step-num">03</div>
+            <div>
+              <div class="step-title">Entra con tu QR</div>
+              <p class="step-desc">Reserva en la app y muestra tu código QR en recepción. Sin tarjetas físicas, sin trámites. Funciona en todas las sedes.</p>
+            </div>
+          </div>
+          <div class="step fade-up fade-up-delay-4">
+            <div class="step-num">04</div>
+            <div>
+              <div class="step-title">Cambia cuando quieras</div>
+              <p class="step-desc">¿Hoy CrossFit en Quito y mañana yoga en Guayaquil? Tu pase funciona en toda la red sin costo adicional.</p>
+            </div>
+          </div>
         </div>
       </div>
-      <div>
-        <div class="footer-col-title">Membresías</div>
-        <ul class="footer-links">
-          <li><a href="#membresias">Plan Esencial</a></li>
-          <li><a href="#membresias">Plan Pro</a></li>
-          <li><a href="#membresias">Plan Élite</a></li>
-          <li><a href="#">Corporativo</a></li>
-          <li><a href="#">Pase diario</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="footer-col-title">Sedes</div>
-        <ul class="footer-links">
-          <li><a href="#sedes">Quito Norte</a></li>
-          <li><a href="#sedes">Quito Sur</a></li>
-          <li><a href="#sedes">Guayaquil Kennedy</a></li>
-          <li><a href="#sedes">Cuenca El Ejido</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="footer-col-title">Empresa</div>
-        <ul class="footer-links">
-          <li><a href="#">Nosotros</a></li>
-          <li><a href="#">Blog de entrenamiento</a></li>
-          <li><a href="#">Trabaja con nosotros</a></li>
-          <li><a href="#">Términos y condiciones</a></li>
-          <li><a href="#">Política de privacidad</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© 2026 Gymbro Ecuador S.A.S. RUC 1791234567001</span>
-      <span>Hecho con rigor en Ecuador</span>
-    </div>
-  </footer>
-
-  <!-- SEDE MODAL -->
-  <div class="modal-backdrop" id="sedeModal" onclick="handleBackdropClick(event)" role="dialog" aria-modal="true" aria-label="Detalle de sede">
-    <div class="modal-sheet" id="modalSheet">
-      <div class="modal-drag-handle"></div>
-      <img id="modalHeroImg" class="modal-hero" src="" alt="" />
-      <div class="modal-body">
-        <div class="modal-header">
+      <div class="how-visual fade-up fade-up-delay-2">
+        <div class="how-visual-top">
+          <div class="how-visual-label">Gimnasios disponibles cerca de ti</div>
+          <div class="gym-mini-list">
+            <div class="gym-mini-item">
+              <div>
+                <div class="gym-mini-name">IronBody CrossFit</div>
+                <div class="gym-mini-meta">González Suárez · Quito · 0.8 km</div>
+              </div>
+              <span class="gym-mini-badge badge-green">Abierto</span>
+            </div>
+            <div class="gym-mini-item">
+              <div>
+                <div class="gym-mini-name">Zen Flow Studio</div>
+                <div class="gym-mini-meta">La Floresta · Quito · 1.2 km</div>
+              </div>
+              <span class="gym-mini-badge badge-green">Abierto</span>
+            </div>
+            <div class="gym-mini-item">
+              <div>
+                <div class="gym-mini-name">Titan Strength</div>
+                <div class="gym-mini-meta">Iñaquito · Quito · 2.1 km</div>
+              </div>
+              <span class="gym-mini-badge badge-amber">Cierra 22h</span>
+            </div>
+            <div class="gym-mini-item">
+              <div>
+                <div class="gym-mini-name">Rumble Box</div>
+                <div class="gym-mini-meta">Carolina · Quito · 3.4 km</div>
+              </div>
+              <span class="gym-mini-badge badge-blue">Clase a las 19h</span>
+            </div>
+          </div>
+        </div>
+        <div class="how-visual-bottom">
           <div>
-            <div class="modal-city" id="modalCity"></div>
-            <span class="modal-tag" id="modalTag"></span>
+            <div class="checkin-text">IronBody CrossFit</div>
+            <div class="checkin-sub">Check-in listo · QR válido</div>
           </div>
-          <button class="modal-close" onclick="closeSede()" aria-label="Cerrar">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
-          </button>
-        </div>
-
-        <div class="modal-info-grid">
-          <div class="modal-info-cell">
-            <div class="modal-info-label">Dirección</div>
-            <div class="modal-info-value" id="modalAddr"></div>
-          </div>
-          <div class="modal-info-cell">
-            <div class="modal-info-label">Horarios</div>
-            <div class="modal-info-value" id="modalHours"></div>
-          </div>
-          <div class="modal-info-cell">
-            <div class="modal-info-label">Teléfono</div>
-            <div class="modal-info-value accent" id="modalPhone"></div>
-          </div>
-          <div class="modal-info-cell">
-            <div class="modal-info-label">Superficie</div>
-            <div class="modal-info-value accent" id="modalArea"></div>
-          </div>
-          <div class="modal-info-cell">
-            <div class="modal-info-label">Capacidad simultánea</div>
-            <div class="modal-info-value accent" id="modalCapacity"></div>
-          </div>
-          <div class="modal-info-cell">
-            <div class="modal-info-label">Miembros activos</div>
-            <div class="modal-info-value accent" id="modalMembers"></div>
-          </div>
-        </div>
-
-        <div class="modal-services-title">Servicios disponibles</div>
-        <div class="modal-services" id="modalServices"></div>
-
-        <div class="modal-footer-actions">
-          <a href="#membresias" class="btn-primary" onclick="closeSede()">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            Inscribirse en esta sede
-          </a>
-          <a id="modalMapLink" href="#" target="_blank" rel="noopener noreferrer" class="modal-map-btn">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Ver en mapa
-          </a>
+          <button class="checkin-btn">Entrar ahora</button>
         </div>
       </div>
     </div>
   </div>
+</section>
 
-  <script>
-    // ── Sede Modal Data ──
-    const sedes = {
-      quito: {
-        city: 'Quito',
-        tag: 'Sede principal',
-        img: 'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=1200&q=85',
-        addr: 'Av. República del Salvador N35-65 y Suecia, Quito 170503',
-        hours: 'Lun–Vie 05:00–23:00\nSáb–Dom 06:00–22:00',
-        phone: '+593 2 246-8831',
-        area: '2,800 m²',
-        capacity: '340 personas',
-        members: '6,142 activos',
-        mapUrl: 'https://maps.google.com/?q=Av+República+del+Salvador+Quito',
-        services: [
-          'Sala de pesas libres', 'Plataformas olímpicas', 'Cardio avanzado',
-          'Spinning', 'CrossFit', 'HIIT', 'Yoga & Pilates', 'Functional Training',
-          'Sauna seco', 'Crioterapia', 'Nutricionista en sede', 'Tienda Gymbro',
-          'Estacionamiento gratuito', 'Custodia de valores', 'Wifi alta velocidad',
-        ]
-      },
-      guayaquil: {
-        city: 'Guayaquil',
-        tag: 'Abierta 24h',
-        img: 'https://images.unsplash.com/photo-1593079831268-3381b0db4a77?w=1200&q=85',
-        addr: 'Av. Francisco de Orellana y Joaquín Orrantia, Guayaquil 090505',
-        hours: 'Abierto las 24 horas\nlos 365 días del año',
-        phone: '+593 4 268-1147',
-        area: '2,400 m²',
-        capacity: '280 personas',
-        members: '5,387 activos',
-        mapUrl: 'https://maps.google.com/?q=Av+Francisco+de+Orellana+Guayaquil',
-        services: [
-          'Sala de pesas libres', 'Cardio avanzado', 'Spinning', 'HIIT',
-          'Clases nocturnas', 'Functional Training', 'Boxeo & Kickboxing',
-          'Sauna húmedo', 'Zona de recuperación activa', 'Bar de proteínas',
-          'Acceso sin personal 24h', 'Wifi alta velocidad', 'Vestuarios premium',
-        ]
-      },
-      cuenca: {
-        city: 'Cuenca',
-        tag: 'Nueva sede 2024',
-        img: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=1200&q=85',
-        addr: 'Av. Solano 10-43 y Remigio Crespo, Cuenca 010204',
-        hours: 'Lun–Vie 05:30–22:30\nSáb–Dom 07:00–21:00',
-        phone: '+593 7 284-3392',
-        area: '2,100 m²',
-        capacity: '220 personas',
-        members: '2,742 activos',
-        mapUrl: 'https://maps.google.com/?q=Av+Solano+Cuenca+Ecuador',
-        services: [
-          'Sala de pesas libres', 'Plataformas olímpicas', 'Cardio avanzado',
-          'Spinning', 'Yoga & Pilates', 'Zumba', 'HIIT', 'Sauna seco',
-          'Fisioterapeuta en sede', 'Nutricionista', 'Wifi alta velocidad',
-          'Estacionamiento gratuito',
-        ]
-      }
-    };
+<!-- GYM NETWORK -->
+<section class="network" id="gimnasios">
+  <div class="container">
+    <div class="network-header">
+      <div>
+        <span class="section-label fade-up">La red</span>
+        <h2 class="section-title fade-up fade-up-delay-1">40+ gimnasios.<br>Tu próxima clase.</h2>
+      </div>
+      <p class="section-sub fade-up fade-up-delay-2">Haz clic en cualquier gimnasio para ver horarios, servicios y cómo llegar.</p>
+    </div>
 
-    function openSede(key) {
-      const s = sedes[key];
-      document.getElementById('modalHeroImg').src = s.img;
-      document.getElementById('modalHeroImg').alt = 'Sede ' + s.city;
-      document.getElementById('modalCity').textContent = s.city;
-      document.getElementById('modalTag').textContent = s.tag;
-      document.getElementById('modalAddr').textContent = s.addr;
-      document.getElementById('modalHours').innerHTML = s.hours.replace('\n', '<br>');
-      document.getElementById('modalPhone').textContent = s.phone;
-      document.getElementById('modalArea').textContent = s.area;
-      document.getElementById('modalCapacity').textContent = s.capacity;
-      document.getElementById('modalMembers').textContent = s.members;
-      document.getElementById('modalMapLink').href = s.mapUrl;
+    <div class="filter-bar fade-up">
+      <button class="filter-btn active" onclick="filterGyms('all', this)">Todos</button>
+      <div class="filter-sep"></div>
+      <button class="filter-btn" onclick="filterGyms('quito', this)">Quito</button>
+      <button class="filter-btn" onclick="filterGyms('guayaquil', this)">Guayaquil</button>
+      <button class="filter-btn" onclick="filterGyms('cuenca', this)">Cuenca</button>
+      <div class="filter-sep"></div>
+      <button class="filter-btn" onclick="filterGyms('crossfit', this)">CrossFit</button>
+      <button class="filter-btn" onclick="filterGyms('yoga', this)">Yoga</button>
+      <button class="filter-btn" onclick="filterGyms('box', this)">Box</button>
+      <button class="filter-btn" onclick="filterGyms('funcional', this)">Funcional</button>
+      <button class="filter-btn" onclick="filterGyms('pesas', this)">Pesas</button>
+    </div>
 
-      const svcs = document.getElementById('modalServices');
-      svcs.innerHTML = s.services.map(sv =>
-        `<span class="service-chip">${sv}</span>`
-      ).join('');
+    <div class="gyms-grid" id="gymsGrid">
+      <!-- Cards injected by JS -->
+    </div>
+  </div>
+</section>
 
-      const modal = document.getElementById('sedeModal');
-      modal.classList.add('open');
-      document.body.style.overflow = 'hidden';
-      document.getElementById('modalSheet').scrollTop = 0;
-    }
+<!-- PLANS -->
+<section class="plans" id="planes">
+  <div class="container">
+    <div class="plans-header">
+      <div>
+        <span class="section-label fade-up">Planes</span>
+        <h2 class="section-title fade-up fade-up-delay-1">Elige cuánto<br>quieres moverse.</h2>
+      </div>
+      <p class="section-sub fade-up fade-up-delay-2">Todos los planes incluyen acceso a cualquier gimnasio de la red. Sin contratos. Cancela cuando quieras.</p>
+    </div>
+    <div class="plans-grid">
+      <div class="plan-card fade-up">
+        <div class="plan-name">Starter</div>
+        <div class="plan-price"><sup>$</sup>29</div>
+        <div class="plan-price-note">por mes · sin permanencia</div>
+        <div class="plan-visits">
+          <span class="plan-visits-num">8</span>
+          <span class="plan-visits-label">visitas / mes</span>
+        </div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li class="active"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Acceso a gimnasios nivel básico</li>
+          <li class="active"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>App Gymbro + QR de acceso</li>
+          <li class="active"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Reserva de clases incluida</li>
+          <li class="active"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>3 ciudades</li>
+          <li><svg class="x-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>Gimnasios premium</li>
+          <li><svg class="x-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>Visitas ilimitadas</li>
+        </ul>
+        <a href="#" class="plan-btn plan-btn-outline">Comenzar</a>
+      </div>
+      <div class="plan-card featured fade-up fade-up-delay-1">
+        <div class="plan-badge">Más popular</div>
+        <div class="plan-name">Pro</div>
+        <div class="plan-price"><sup>$</sup>49</div>
+        <div class="plan-price-note">por mes · sin permanencia</div>
+        <div class="plan-visits">
+          <span class="plan-visits-num">20</span>
+          <span class="plan-visits-label">visitas / mes</span>
+        </div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li class="active"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Todo lo de Starter</li>
+          <li class="active"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Acceso a gimnasios premium</li>
+          <li class="active"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Congelar membresía 15 días/año</li>
+          <li class="active"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Historial y estadísticas</li>
+          <li class="active"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>2 invitados por mes ($3 c/u)</li>
+          <li><svg class="x-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>Visitas ilimitadas</li>
+        </ul>
+        <a href="#" class="plan-btn plan-btn-solid">Comenzar</a>
+      </div>
+      <div class="plan-card fade-up fade-up-delay-2">
+        <div class="plan-name">Elite</div>
+        <div class="plan-price"><sup>$</sup>75</div>
+        <div class="plan-price-note">por mes · sin permanencia</div>
+        <div class="plan-visits">
+          <span class="plan-visits-num">∞</span>
+          <span class="plan-visits-label">visitas ilimitadas</span>
+        </div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li class="active"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Visitas ilimitadas a toda la red</li>
+          <li class="active"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Todos los gimnasios premium</li>
+          <li class="active"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Congelar hasta 30 días/año</li>
+          <li class="active"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Invitados ilimitados ($3 c/u)</li>
+          <li class="active"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Soporte prioritario 24/7</li>
+          <li class="active"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Descuentos en tiendas partner</li>
+        </ul>
+        <a href="#" class="plan-btn plan-btn-outline">Comenzar</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-    function closeSede() {
-      document.getElementById('sedeModal').classList.remove('open');
-      document.body.style.overflow = '';
-    }
+<!-- TESTIMONIALS -->
+<section class="proof" style="background:var(--bg-2);">
+  <div class="container">
+    <span class="section-label fade-up">Testimonios</span>
+    <h2 class="section-title fade-up fade-up-delay-1">Lo que dicen<br>quienes ya entrenan.</h2>
+    <div class="proof-layout">
+      <div class="testimonials">
+        <div class="testimonial-card fade-up">
+          <div class="testimonial-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <p class="testimonial-text">"Antes pagaba $60 en un solo gym y me aburría de la rutina. Con Gymbro Pro hago CrossFit los lunes en IronBody, yoga los jueves en Zen Flow y spinning los fines de semana. Todo en Quito, todo con el mismo pase."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar"><img src="https://picsum.photos/seed/valentina_uio/80/80" alt="Valentina Rosero" /></div>
+            <div>
+              <div class="author-name">Valentina Rosero</div>
+              <div class="author-meta">Plan Pro · Quito · 8 meses</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card fade-up fade-up-delay-1">
+          <div class="testimonial-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <p class="testimonial-text">"Viajo seguido entre Guayaquil y Cuenca. Con Gymbro Elite no interrumpo mi entrenamiento. Entro en cualquier gym con el QR, sin papeleo, sin hablar con nadie. En Cuenca descubrí Highland CrossFit y es increíble."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar"><img src="https://picsum.photos/seed/mateo_gye/80/80" alt="Mateo Cisneros" /></div>
+            <div>
+              <div class="author-name">Mateo Cisneros</div>
+              <div class="author-meta">Plan Elite · Guayaquil · 5 meses</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card fade-up fade-up-delay-2">
+          <div class="testimonial-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <p class="testimonial-text">"Empecé con el Starter y en 2 meses pasé al Pro. La variedad de gyms en Quito es brutal — box, pilates, funcional, pesas. Nunca me repito. Y si un mes viajo, lo congelo desde la app en 10 segundos."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar"><img src="https://picsum.photos/seed/andrea_cue/80/80" alt="Andrea Vintimilla" /></div>
+            <div>
+              <div class="author-name">Andrea Vintimilla</div>
+              <div class="author-meta">Plan Pro · Cuenca · 3 meses</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="proof-metrics fade-up fade-up-delay-1">
+        <div class="metric-row"><div class="metric-num">43</div><div class="metric-label">Gimnasios partner en Ecuador</div></div>
+        <div class="metric-row"><div class="metric-num">9,847</div><div class="metric-label">Suscriptores activos</div></div>
+        <div class="metric-row"><div class="metric-num">4.3</div><div class="metric-label">Disciplinas distintas por usuario/mes</div></div>
+        <div class="metric-row"><div class="metric-num">96.1%</div><div class="metric-label">Tasa de renovación mensual</div></div>
+        <div class="metric-row"><div class="metric-num">$29</div><div class="metric-label">Precio de entrada (plan Starter)</div></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    function handleBackdropClick(e) {
-      if (e.target === document.getElementById('sedeModal')) closeSede();
-    }
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="faq-layout">
+      <div>
+        <span class="section-label fade-up">FAQ</span>
+        <h2 class="section-title fade-up fade-up-delay-1">Preguntas<br>frecuentes.</h2>
+        <p class="section-sub fade-up fade-up-delay-2" style="margin-top:1rem;">¿Dudas? Escríbenos por WhatsApp o visita nuestro centro de ayuda.</p>
+        <a href="#" class="btn-primary fade-up fade-up-delay-3" style="margin-top:2rem;display:inline-flex;">Hablar con soporte</a>
+      </div>
+      <div class="faq-list fade-up fade-up-delay-1">
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">¿Puedo ir a cualquier gimnasio de la red?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+          <div class="faq-answer"><div class="faq-answer-inner">Sí. Con cualquier plan tienes acceso a toda la red de gimnasios en Quito, Guayaquil y Cuenca. Los planes Pro y Elite incluyen también los gimnasios etiquetados como "Premium". El plan Starter cubre los gimnasios nivel básico y medio.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">¿Cómo funciona el check-in en los gimnasios?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+          <div class="faq-answer"><div class="faq-answer-inner">Descarga la app Gymbro, selecciona el gimnasio al que vas a ir y genera tu código QR de acceso. Muéstralo en recepción y listo. Algunos gimnasios tienen torniquetes directos con lector QR. No necesitas llevar nada más.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">¿Hay contrato de permanencia?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+          <div class="faq-answer"><div class="faq-answer-inner">No. Gymbro es 100% mes a mes. Puedes cancelar o cambiar de plan desde la app antes del próximo ciclo de facturación, sin penalidades ni llamadas molestas.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">¿Qué pasa si supero mis visitas del mes?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+          <div class="faq-answer"><div class="faq-answer-inner">Cada visita adicional fuera de tu cuota cuesta $4. Te notificamos en la app antes de cobrarte. También puedes upgradar tu plan en cualquier momento del mes de forma inmediata.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">¿Puedo usar el pase en las 3 ciudades?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+          <div class="faq-answer"><div class="faq-answer-inner">Sí. Tu suscripción Gymbro funciona en todos los gimnasios de la red sin importar la ciudad. Cada visita a cualquier sede descuenta del mismo cupo mensual.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">¿Cómo pago la suscripción?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+          <div class="faq-answer"><div class="faq-answer-inner">Aceptamos tarjetas Visa, Mastercard y Diners Club, transferencias bancarias a Banco Pichincha o Banco del Pacífico, y DeUna. El cobro es automático cada mes el día de tu inscripción.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeSede();
-    });
+<!-- CTA -->
+<div class="cta-section">
+  <div class="container">
+    <div class="cta-banner fade-up">
+      <div>
+        <h2 class="cta-title">Tu primer mes<br>a $1. Luego decides.</h2>
+        <p class="cta-sub">Oferta para nuevos usuarios · Cancela antes de que termine el mes de prueba.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="#planes" class="btn-white">Activar acceso ahora</a>
+        <span class="cta-note">Sin tarjeta de crédito obligatoria · Ecuador</span>
+      </div>
+    </div>
+  </div>
+</div>
 
-    document.querySelectorAll('.location-card').forEach(card => {
-      card.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') card.click();
-      });
-    });
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name">GYM<span>BRO</span></div>
+      <p class="footer-brand-desc">La red de gimnasios más grande de Ecuador. Una suscripción, 40+ sedes, 3 ciudades.</p>
+      <div class="footer-socials">
+        <a href="#" class="social-link" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" class="social-link" aria-label="TikTok"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg></a>
+        <a href="#" class="social-link" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Planes</div>
+      <ul class="footer-links">
+        <li><a href="#planes">Starter — $29</a></li>
+        <li><a href="#planes">Pro — $49</a></li>
+        <li><a href="#planes">Elite — $75</a></li>
+        <li><a href="#">Corporativo</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Gimnasios</div>
+      <ul class="footer-links">
+        <li><a href="#gimnasios">Quito</a></li>
+        <li><a href="#gimnasios">Guayaquil</a></li>
+        <li><a href="#gimnasios">Cuenca</a></li>
+        <li><a href="#">Ser partner</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Empresa</div>
+      <ul class="footer-links">
+        <li><a href="#">Nosotros</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Trabaja con nosotros</a></li>
+        <li><a href="#">Términos</a></li>
+        <li><a href="#">Privacidad</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Gymbro Ecuador S.A.S. · RUC 1792847360001</span>
+    <span>Construido en Ecuador</span>
+  </div>
+</footer>
 
-    // ── Hamburger Menu ──
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobileMenu');
+<!-- GYM DETAIL MODAL -->
+<div class="modal-backdrop" id="gymModal" onclick="handleBackdropClick(event)">
+  <div class="modal-sheet" id="modalSheet">
+    <div class="modal-drag-handle"></div>
+    <img id="modalImg" class="modal-hero-img" src="" alt="" />
+    <div class="modal-body">
+      <div class="modal-header">
+        <div>
+          <div class="modal-gym-name" id="modalName"></div>
+          <div class="modal-gym-type" id="modalType"></div>
+          <span class="modal-tag" id="modalPremium"></span>
+        </div>
+        <button class="modal-close" onclick="closeGym()" aria-label="Cerrar">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
 
-    hamburger.addEventListener('click', () => {
-      mobileMenu.classList.toggle('open');
-    });
+      <div class="modal-section-title" style="margin-bottom:0.6rem;">Planes con acceso</div>
+      <div class="plan-compat" id="modalPlanCompat"></div>
 
-    function closeMenu() {
-      mobileMenu.classList.remove('open');
-    }
+      <div class="modal-info-grid">
+        <div class="modal-info-cell"><div class="modal-info-label">Dirección</div><div class="modal-info-value" id="modalAddr"></div></div>
+        <div class="modal-info-cell"><div class="modal-info-label">Ciudad</div><div class="modal-info-value" id="modalCity"></div></div>
+        <div class="modal-info-cell"><div class="modal-info-label">Horarios</div><div class="modal-info-value" id="modalHours"></div></div>
+        <div class="modal-info-cell"><div class="modal-info-label">Teléfono</div><div class="modal-info-value mono" id="modalPhone"></div></div>
+        <div class="modal-info-cell"><div class="modal-info-label">Capacidad simultánea</div><div class="modal-info-value mono" id="modalCap"></div></div>
+        <div class="modal-info-cell"><div class="modal-info-label">Miembros Gymbro/mes</div><div class="modal-info-value mono" id="modalVisits"></div></div>
+      </div>
 
-    // ── Intersection Observer (fade-up) ──
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+      <div class="modal-section-title">Disciplinas y servicios</div>
+      <div class="modal-chips" id="modalChips"></div>
 
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+      <div class="modal-actions">
+        <a href="#planes" class="btn-primary" onclick="closeGym()">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Acceder con Gymbro
+        </a>
+        <a id="modalMap" href="#" target="_blank" rel="noopener noreferrer" class="modal-map-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Ver en mapa
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
 
-    // ── FAQ toggle ──
-    function toggleFaq(el) {
-      const item = el.closest('.faq-item');
-      const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-      if (!isOpen) item.classList.add('open');
-    }
+<script>
+const GYMS = [
+  // ─── QUITO ───
+  {
+    id:'ironbody', name:'IronBody CrossFit', type:'CrossFit · Alta intensidad',
+    city:'Quito', district:'González Suárez',
+    addr:'Av. González Suárez N26-55 y Paul Rivet, Quito',
+    hours:'Lun–Vie 06:00–22:00 · Sáb 07:00–20:00',
+    phone:'+593 2 254-7319', cap:'80 personas', visits:'341 visitas/mes',
+    tags:['crossfit','quito'], chips:['CrossFit', 'WOD diario', 'Olimpismo', 'Movilidad', 'Nutrición deportiva', 'Vestuarios'],
+    plans:['starter','pro','elite'], premium:false,
+    img:'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=900&q=80',
+    map:'https://maps.google.com/?q=González+Suárez+Quito'
+  },
+  {
+    id:'zenflow', name:'Zen Flow Studio', type:'Yoga · Pilates · Meditación',
+    city:'Quito', district:'La Floresta',
+    addr:'Av. Isabel La Católica N24-18 y Madrid, La Floresta, Quito',
+    hours:'Lun–Dom 06:00–21:00',
+    phone:'+593 2 223-8841', cap:'40 personas', visits:'218 visitas/mes',
+    tags:['yoga','quito'], chips:['Yoga Hatha', 'Vinyasa Flow', 'Pilates Mat', 'Meditación', 'Sauna', 'Té post-clase'],
+    plans:['starter','pro','elite'], premium:false,
+    img:'https://images.unsplash.com/photo-1545389336-cf090694435e?w=900&q=80',
+    map:'https://maps.google.com/?q=La+Floresta+Quito'
+  },
+  {
+    id:'titan', name:'Titan Strength', type:'Pesas libres · Powerlifting',
+    city:'Quito', district:'Iñaquito',
+    addr:'Av. Amazonas N37-61 e Iñaquito, Quito 170507',
+    hours:'Lun–Vie 05:00–23:00 · Sáb–Dom 06:00–22:00',
+    phone:'+593 2 244-7602', cap:'120 personas', visits:'489 visitas/mes',
+    tags:['pesas','quito'], chips:['Pesas libres', 'Plataformas olímpicas', 'Powerlifting', 'Cardio', 'Sauna seco', 'Tienda suplementos', 'Estacionamiento'],
+    plans:['starter','pro','elite'], premium:false,
+    img:'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=900&q=80',
+    map:'https://maps.google.com/?q=Iñaquito+Quito'
+  },
+  {
+    id:'rumble', name:'Rumble Box', type:'Boxeo · Kickboxing · MMA',
+    city:'Quito', district:'Carolina',
+    addr:'Av. de la República 503 y Eloy Alfaro, Quito 170136',
+    hours:'Lun–Sáb 06:30–22:00',
+    phone:'+593 2 246-1177', cap:'60 personas', visits:'267 visitas/mes',
+    tags:['box','quito'], chips:['Boxeo', 'Kickboxing', 'Muay Thai', 'Grappling', 'Saco pesado', 'Ring oficial', 'Guantes disponibles'],
+    plans:['pro','elite'], premium:true,
+    img:'https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=900&q=80',
+    map:'https://maps.google.com/?q=La+Carolina+Quito'
+  },
+  {
+    id:'sparta', name:'Sparta Functional', type:'Entrenamiento funcional · HIIT',
+    city:'Quito', district:'Cumbayá',
+    addr:'Calle Francisco de Orellana y Diego de Almagro, Cumbayá, Quito',
+    hours:'Lun–Vie 05:30–22:30 · Sáb–Dom 07:00–20:00',
+    phone:'+593 2 289-4411', cap:'70 personas', visits:'312 visitas/mes',
+    tags:['funcional','quito'], chips:['Functional Training', 'HIIT', 'TRX', 'Kettlebell', 'Calistenia', 'Clases grupales', 'App reservas'],
+    plans:['starter','pro','elite'], premium:false,
+    img:'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=900&q=80',
+    map:'https://maps.google.com/?q=Cumbayá+Quito'
+  },
+  {
+    id:'altitude', name:'Altitude Performance', type:'Rendimiento · Alto rendimiento deportivo',
+    city:'Quito', district:'El Inca',
+    addr:'Av. El Inca N42-35 y Edmundo Carvajal, Quito',
+    hours:'Lun–Vie 06:00–22:00 · Sáb 07:00–18:00',
+    phone:'+593 2 242-3308', cap:'55 personas', visits:'198 visitas/mes',
+    tags:['funcional','pesas','quito'], chips:['Rendimiento deportivo', 'Pesas libres', 'Pista de velocidad', 'Fisioterapia', 'Análisis biométrico', 'Sauna'],
+    plans:['pro','elite'], premium:true,
+    img:'https://images.unsplash.com/photo-1581009137042-c552e485697a?w=900&q=80',
+    map:'https://maps.google.com/?q=El+Inca+Quito'
+  },
+  {
+    id:'cyclelab', name:'CycleLab Studio', type:'Spinning · Ciclismo indoor',
+    city:'Quito', district:'Quito Norte',
+    addr:'Av. Naciones Unidas E7-26 y Shyris, Quito',
+    hours:'Lun–Dom 06:00–21:30',
+    phone:'+593 2 226-5543', cap:'45 personas', visits:'276 visitas/mes',
+    tags:['funcional','quito'], chips:['Spinning', 'Ciclismo indoor', 'Clases con DJ', 'Ritmo cardíaco', 'Ducha', 'Casilleros'],
+    plans:['starter','pro','elite'], premium:false,
+    img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80',
+    map:'https://maps.google.com/?q=Naciones+Unidas+Quito'
+  },
 
-    // ── Navbar shrink on scroll ──
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 60) {
-        navbar.style.padding = '0.85rem 4rem';
-      } else {
-        navbar.style.padding = '1.25rem 4rem';
-      }
-    }, { passive: true });
-  </script>
+  // ─── GUAYAQUIL ───
+  {
+    id:'pacific', name:'Pacific Strength', type:'Bodybuilding · Pesas libres',
+    city:'Guayaquil', district:'Kennedy Norte',
+    addr:'Av. Francisco de Orellana y Av. Miguel H. Alcívar, Kennedy Norte, Guayaquil',
+    hours:'Lun–Vie 05:00–23:00 · Sáb–Dom 06:00–22:00',
+    phone:'+593 4 263-9918', cap:'130 personas', visits:'522 visitas/mes',
+    tags:['pesas','guayaquil'], chips:['Pesas libres', 'Máquinas Hammer Strength', 'Cardio', 'Sauna húmedo', 'Bar proteínas', 'Estacionamiento'],
+    plans:['starter','pro','elite'], premium:false,
+    img:'https://images.unsplash.com/photo-1593079831268-3381b0db4a77?w=900&q=80',
+    map:'https://maps.google.com/?q=Kennedy+Norte+Guayaquil'
+  },
+  {
+    id:'coastcf', name:'Coast CrossFit', type:'CrossFit · Functional',
+    city:'Guayaquil', district:'Alborada',
+    addr:'Av. Rodolfo Baquerizo Nazur y Av. Barcelona, Alborada, Guayaquil',
+    hours:'Lun–Sáb 06:00–22:00',
+    phone:'+593 4 221-7743', cap:'65 personas', visits:'287 visitas/mes',
+    tags:['crossfit','funcional','guayaquil'], chips:['CrossFit', 'Functional Training', 'HIIT', 'Olimpismo', 'Nutricionista'],
+    plans:['starter','pro','elite'], premium:false,
+    img:'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=900&q=80',
+    map:'https://maps.google.com/?q=Alborada+Guayaquil'
+  },
+  {
+    id:'combat', name:'Combat Zone GYE', type:'MMA · Box · Muay Thai',
+    city:'Guayaquil', district:'Urdesa',
+    addr:'Av. Víctor Emilio Estrada 804 y Las Monjas, Urdesa, Guayaquil',
+    hours:'Lun–Sáb 07:00–22:00',
+    phone:'+593 4 238-4422', cap:'55 personas', visits:'193 visitas/mes',
+    tags:['box','guayaquil'], chips:['Box', 'Muay Thai', 'BJJ', 'Wrestling', 'Ring', 'Área de sacos', 'Vestuarios'],
+    plans:['pro','elite'], premium:true,
+    img:'https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=900&q=80',
+    map:'https://maps.google.com/?q=Urdesa+Guayaquil'
+  },
+  {
+    id:'seazen', name:'SeaZen Yoga', type:'Yoga · Pilates · Mindfulness',
+    city:'Guayaquil', district:'Miraflores',
+    addr:'Av. del Periodista y Av. Carlos Julio Arosemena, Miraflores, Guayaquil',
+    hours:'Lun–Dom 07:00–21:00',
+    phone:'+593 4 244-6631', cap:'35 personas', visits:'148 visitas/mes',
+    tags:['yoga','guayaquil'], chips:['Yoga Bikram', 'Pilates Reformer', 'Meditación', 'Sauna', 'Masajes', 'Tienda holística'],
+    plans:['pro','elite'], premium:true,
+    img:'https://images.unsplash.com/photo-1545389336-cf090694435e?w=900&q=80',
+    map:'https://maps.google.com/?q=Miraflores+Guayaquil'
+  },
+  {
+    id:'portstrength', name:'Port Strength Club', type:'Pesas · Crossfit · Funcional',
+    city:'Guayaquil', district:'Samborondón',
+    addr:'Vía Samborondón Km 5.5, Plaza Laguna, Guayaquil',
+    hours:'Lun–Vie 05:30–22:30 · Sáb–Dom 07:00–21:00',
+    phone:'+593 4 268-1104', cap:'90 personas', visits:'374 visitas/mes',
+    tags:['pesas','crossfit','funcional','guayaquil'], chips:['Pesas libres', 'CrossFit', 'Funcional', 'Spinning', 'Clases grupales', 'Nutricionista', 'Estacionamiento'],
+    plans:['starter','pro','elite'], premium:false,
+    img:'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=900&q=80',
+    map:'https://maps.google.com/?q=Samborondon+Guayaquil'
+  },
+
+  // ─── CUENCA ───
+  {
+    id:'highland', name:'Highland CrossFit', type:'CrossFit · Functional · Outdoor',
+    city:'Cuenca', district:'Miraflores',
+    addr:'Av. Fray Vicente Solano 4-31 y Av. Remigio Tamariz, Miraflores, Cuenca',
+    hours:'Lun–Sáb 06:00–21:00',
+    phone:'+593 7 286-4412', cap:'50 personas', visits:'211 visitas/mes',
+    tags:['crossfit','funcional','cuenca'], chips:['CrossFit', 'Functional Training', 'HIIT outdoor', 'Olimpismo', 'Sauna seco'],
+    plans:['starter','pro','elite'], premium:false,
+    img:'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=900&q=80',
+    map:'https://maps.google.com/?q=Miraflores+Cuenca'
+  },
+  {
+    id:'serrayoga', name:'Serra Yoga & Wellness', type:'Yoga · Bienestar integral',
+    city:'Cuenca', district:'San Sebastián',
+    addr:'Calle Hermano Miguel 6-23 y Presidente Córdova, San Sebastián, Cuenca',
+    hours:'Lun–Dom 07:00–20:30',
+    phone:'+593 7 283-1156', cap:'28 personas', visits:'132 visitas/mes',
+    tags:['yoga','cuenca'], chips:['Yoga Iyengar', 'Yin Yoga', 'Pranayama', 'Meditación', 'Temazcal', 'Masajes terapéuticos'],
+    plans:['pro','elite'], premium:true,
+    img:'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=900&q=80',
+    map:'https://maps.google.com/?q=San+Sebastian+Cuenca'
+  },
+  {
+    id:'andeanfit', name:'Andean Fit', type:'Pesas · Cardio · Clases grupales',
+    city:'Cuenca', district:'El Ejido',
+    addr:'Av. Solano 12-78 y Av. 12 de Abril, El Ejido, Cuenca',
+    hours:'Lun–Vie 05:30–22:00 · Sáb–Dom 07:00–20:00',
+    phone:'+593 7 284-8820', cap:'75 personas', visits:'298 visitas/mes',
+    tags:['pesas','funcional','cuenca'], chips:['Pesas libres', 'Cardio', 'Zumba', 'Body Pump', 'Spinning', 'Sauna', 'Fisioterapeuta'],
+    plans:['starter','pro','elite'], premium:false,
+    img:'https://images.unsplash.com/photo-1581009137042-c552e485697a?w=900&q=80',
+    map:'https://maps.google.com/?q=El+Ejido+Cuenca'
+  },
+  {
+    id:'cajabox', name:'Caja de Box Cuenca', type:'Boxeo · Kickboxing',
+    city:'Cuenca', district:'El Vecino',
+    addr:'Av. de las Américas 5-126 y Lorenzo Piedra, El Vecino, Cuenca',
+    hours:'Lun–Sáb 07:00–21:00',
+    phone:'+593 7 288-3340', cap:'40 personas', visits:'156 visitas/mes',
+    tags:['box','cuenca'], chips:['Boxeo', 'Kickboxing', 'Cardio box', 'Saco pesado', 'Ring reglamentario', 'Clases grupales'],
+    plans:['starter','pro','elite'], premium:false,
+    img:'https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=900&q=80',
+    map:'https://maps.google.com/?q=El+Vecino+Cuenca'
+  }
+];
+
+// ── Render gym cards ──
+function renderGyms(list) {
+  const grid = document.getElementById('gymsGrid');
+  grid.innerHTML = list.map(g => `
+    <div class="gym-card" onclick="openGym('${g.id}')" role="button" tabindex="0" aria-label="Ver ${g.name}" data-tags="${g.tags.join(',')}">
+      <img class="gym-card-img" src="${g.img}" alt="${g.name}" loading="lazy" />
+      <div class="gym-card-body">
+        <div class="gym-card-tags">
+          ${g.premium ? '<span class="gym-card-tag accent-tag">Premium</span>' : ''}
+          <span class="gym-card-tag">${g.city}</span>
+          ${g.chips.slice(0,2).map(c => `<span class="gym-card-tag">${c}</span>`).join('')}
+        </div>
+        <div class="gym-card-name">${g.name}</div>
+        <div class="gym-card-addr">${g.district} · ${g.city}</div>
+        <div class="gym-card-footer">
+          <span class="gym-card-city">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            ${g.city}
+          </span>
+          <svg class="gym-card-arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </div>
+    </div>
+  `).join('');
+
+  // keyboard support
+  grid.querySelectorAll('.gym-card').forEach(c => {
+    c.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' ') c.click(); });
+  });
+
+  // re-observe new cards
+  grid.querySelectorAll('.gym-card').forEach((c,i) => {
+    c.style.opacity = '0';
+    c.style.transform = 'translateY(24px)';
+    c.style.transition = `opacity 0.5s cubic-bezier(0.16,1,0.3,1) ${i*60}ms, transform 0.5s cubic-bezier(0.16,1,0.3,1) ${i*60}ms`;
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      c.style.opacity = '1';
+      c.style.transform = 'translateY(0)';
+    }));
+  });
+}
+
+renderGyms(GYMS);
+
+// ── Filter ──
+let activeFilter = 'all';
+function filterGyms(tag, btn) {
+  activeFilter = tag;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const cityTags = ['quito','guayaquil','cuenca'];
+  const typeTags = ['crossfit','yoga','box','funcional','pesas'];
+  const filtered = GYMS.filter(g => {
+    if(tag === 'all') return true;
+    return g.tags.includes(tag);
+  });
+  renderGyms(filtered);
+}
+
+// ── Gym Modal ──
+function openGym(id) {
+  const g = GYMS.find(x => x.id === id);
+  if(!g) return;
+  document.getElementById('modalImg').src = g.img;
+  document.getElementById('modalImg').alt = g.name;
+  document.getElementById('modalName').textContent = g.name;
+  document.getElementById('modalType').textContent = g.type;
+  document.getElementById('modalPremium').textContent = g.premium ? 'Premium' : 'Básico / Medio';
+  document.getElementById('modalPremium').style.background = g.premium ? 'rgba(224,74,40,0.12)' : 'rgba(255,255,255,0.05)';
+  document.getElementById('modalPremium').style.color = g.premium ? 'var(--accent)' : 'var(--text-muted)';
+  document.getElementById('modalPremium').style.borderColor = g.premium ? 'rgba(224,74,40,0.3)' : 'var(--border)';
+  document.getElementById('modalAddr').textContent = g.addr;
+  document.getElementById('modalCity').textContent = g.city + ' · ' + g.district;
+  document.getElementById('modalHours').innerHTML = g.hours.replace('·', '<br>');
+  document.getElementById('modalPhone').textContent = g.phone;
+  document.getElementById('modalCap').textContent = g.cap;
+  document.getElementById('modalVisits').textContent = g.visits;
+  document.getElementById('modalMap').href = g.map;
+
+  const planLabels = { starter: ['Starter', 'compat-starter'], pro: ['Pro', 'compat-pro'], elite: ['Elite', 'compat-elite'] };
+  document.getElementById('modalPlanCompat').innerHTML = g.plans.map(p =>
+    `<span class="plan-compat-chip ${planLabels[p][1]}">${planLabels[p][0]}</span>`
+  ).join('');
+
+  document.getElementById('modalChips').innerHTML = g.chips.map(c =>
+    `<span class="modal-chip">${c}</span>`
+  ).join('');
+
+  const modal = document.getElementById('gymModal');
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  document.getElementById('modalSheet').scrollTop = 0;
+}
+
+function closeGym() {
+  document.getElementById('gymModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function handleBackdropClick(e) {
+  if(e.target === document.getElementById('gymModal')) closeGym();
+}
+
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeGym(); });
+
+// ── Intersection Observer ──
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// ── FAQ ──
+function toggleFaq(el) {
+  const item = el.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if(!isOpen) item.classList.add('open');
+}
+
+// ── Nav ──
+const hamburger = document.getElementById('hamburger');
+hamburger.addEventListener('click', () => document.getElementById('mobileMenu').classList.toggle('open'));
+function closeMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
+
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').style.padding = window.scrollY > 60 ? '0.85rem 4rem' : '1.25rem 4rem';
+}, { passive: true });
+</script>
 </body>
 </html>
