@@ -897,6 +897,188 @@
       color: var(--text-subtle);
     }
 
+    /* ─── SEDE MODAL ─── */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0,0,0,0);
+      backdrop-filter: blur(0px);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      pointer-events: none;
+      transition: background 0.35s ease, backdrop-filter 0.35s ease;
+    }
+    .modal-backdrop.open {
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(8px);
+      pointer-events: all;
+    }
+
+    .modal-sheet {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 24px 24px 0 0;
+      width: 100%;
+      max-width: 860px;
+      max-height: 90dvh;
+      overflow-y: auto;
+      transform: translateY(100%);
+      transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+    .modal-backdrop.open .modal-sheet {
+      transform: translateY(0);
+    }
+
+    .modal-drag-handle {
+      width: 40px; height: 4px;
+      background: var(--border);
+      border-radius: 2px;
+      margin: 1rem auto 0;
+    }
+
+    .modal-hero {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      object-position: center 30%;
+      display: block;
+      margin-top: 1rem;
+    }
+
+    .modal-body {
+      padding: 2rem 2.5rem 3rem;
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .modal-city {
+      font-size: 2rem;
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      color: var(--text);
+      line-height: 1;
+    }
+    .modal-tag {
+      display: inline-block;
+      background: rgba(224,74,40,0.12);
+      border: 1px solid rgba(224,74,40,0.3);
+      color: var(--accent);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.7rem;
+      border-radius: 100px;
+      margin-top: 0.5rem;
+    }
+    .modal-close {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--bg-3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--text-muted);
+      flex-shrink: 0;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .modal-close:hover { border-color: rgba(255,255,255,0.2); color: var(--text); }
+
+    .modal-info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+    .modal-info-cell {
+      background: var(--bg-3);
+      padding: 1.1rem 1.35rem;
+    }
+    .modal-info-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.35rem;
+    }
+    .modal-info-value {
+      font-size: 0.9rem;
+      color: var(--text);
+      font-weight: 500;
+      line-height: 1.4;
+    }
+    .modal-info-value.accent { color: var(--accent); font-family: var(--mono); font-weight: 600; }
+
+    .modal-services-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .modal-services {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+    .service-chip {
+      background: var(--bg-3);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 0.35rem 0.85rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .modal-footer-actions {
+      display: flex;
+      gap: 1rem;
+    }
+    .modal-footer-actions .btn-primary { flex: 1; justify-content: center; }
+    .modal-map-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-muted);
+      font-family: var(--font);
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .modal-map-btn:hover { border-color: rgba(255,255,255,0.2); color: var(--text); }
+
+    @media (max-width: 640px) {
+      .modal-sheet { border-radius: 20px 20px 0 0; max-height: 95dvh; }
+      .modal-body { padding: 1.5rem 1.25rem 2.5rem; }
+      .modal-hero { height: 200px; }
+      .modal-info-grid { grid-template-columns: 1fr; }
+      .modal-footer-actions { flex-direction: column; }
+    }
+
     /* ─── ANIMATIONS ─── */
     .fade-up {
       opacity: 0;
@@ -1369,7 +1551,7 @@
       <h2 class="section-title fade-up fade-up-delay-1">Tres ciudades.<br>Un solo acceso.</h2>
 
       <div class="locations-grid">
-        <div class="location-card fade-up">
+        <div class="location-card fade-up" onclick="openSede('quito')" role="button" tabindex="0" aria-label="Ver detalles Quito">
           <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=800&q=80" alt="Sede Quito" />
           <div class="location-overlay"></div>
           <div class="location-info">
@@ -1377,8 +1559,12 @@
             <div class="location-addr">Av. República del Salvador N35-65 y Suecia, Quito 170503</div>
             <span class="location-tag">Sede principal</span>
           </div>
+          <div style="position:absolute;top:1.1rem;right:1.1rem;background:rgba(8,8,8,0.65);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:0.4rem 0.65rem;display:flex;align-items:center;gap:0.35rem;font-size:0.7rem;color:rgba(255,255,255,0.7);font-weight:600;letter-spacing:0.04em;z-index:2;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
+            Ver detalles
+          </div>
         </div>
-        <div class="location-card fade-up fade-up-delay-1">
+        <div class="location-card fade-up fade-up-delay-1" onclick="openSede('guayaquil')" role="button" tabindex="0" aria-label="Ver detalles Guayaquil">
           <img src="https://images.unsplash.com/photo-1593079831268-3381b0db4a77?w=800&q=80" alt="Sede Guayaquil" />
           <div class="location-overlay"></div>
           <div class="location-info">
@@ -1386,14 +1572,22 @@
             <div class="location-addr">Av. Francisco de Orellana y Joaquín Orrantia, Guayaquil 090505</div>
             <span class="location-tag">Abierta 24h</span>
           </div>
+          <div style="position:absolute;top:1.1rem;right:1.1rem;background:rgba(8,8,8,0.65);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:0.4rem 0.65rem;display:flex;align-items:center;gap:0.35rem;font-size:0.7rem;color:rgba(255,255,255,0.7);font-weight:600;letter-spacing:0.04em;z-index:2;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
+            Ver detalles
+          </div>
         </div>
-        <div class="location-card fade-up fade-up-delay-2">
+        <div class="location-card fade-up fade-up-delay-2" onclick="openSede('cuenca')" role="button" tabindex="0" aria-label="Ver detalles Cuenca">
           <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=800&q=80" alt="Sede Cuenca" />
           <div class="location-overlay"></div>
           <div class="location-info">
             <div class="location-city">Cuenca</div>
             <div class="location-addr">Av. Solano 10-43 y Remigio Crespo, Cuenca 010204</div>
             <span class="location-tag">Nueva sede 2024</span>
+          </div>
+          <div style="position:absolute;top:1.1rem;right:1.1rem;background:rgba(8,8,8,0.65);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:0.4rem 0.65rem;display:flex;align-items:center;gap:0.35rem;font-size:0.7rem;color:rgba(255,255,255,0.7);font-weight:600;letter-spacing:0.04em;z-index:2;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
+            Ver detalles
           </div>
         </div>
       </div>
@@ -1548,7 +1742,169 @@
     </div>
   </footer>
 
+  <!-- SEDE MODAL -->
+  <div class="modal-backdrop" id="sedeModal" onclick="handleBackdropClick(event)" role="dialog" aria-modal="true" aria-label="Detalle de sede">
+    <div class="modal-sheet" id="modalSheet">
+      <div class="modal-drag-handle"></div>
+      <img id="modalHeroImg" class="modal-hero" src="" alt="" />
+      <div class="modal-body">
+        <div class="modal-header">
+          <div>
+            <div class="modal-city" id="modalCity"></div>
+            <span class="modal-tag" id="modalTag"></span>
+          </div>
+          <button class="modal-close" onclick="closeSede()" aria-label="Cerrar">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+          </button>
+        </div>
+
+        <div class="modal-info-grid">
+          <div class="modal-info-cell">
+            <div class="modal-info-label">Dirección</div>
+            <div class="modal-info-value" id="modalAddr"></div>
+          </div>
+          <div class="modal-info-cell">
+            <div class="modal-info-label">Horarios</div>
+            <div class="modal-info-value" id="modalHours"></div>
+          </div>
+          <div class="modal-info-cell">
+            <div class="modal-info-label">Teléfono</div>
+            <div class="modal-info-value accent" id="modalPhone"></div>
+          </div>
+          <div class="modal-info-cell">
+            <div class="modal-info-label">Superficie</div>
+            <div class="modal-info-value accent" id="modalArea"></div>
+          </div>
+          <div class="modal-info-cell">
+            <div class="modal-info-label">Capacidad simultánea</div>
+            <div class="modal-info-value accent" id="modalCapacity"></div>
+          </div>
+          <div class="modal-info-cell">
+            <div class="modal-info-label">Miembros activos</div>
+            <div class="modal-info-value accent" id="modalMembers"></div>
+          </div>
+        </div>
+
+        <div class="modal-services-title">Servicios disponibles</div>
+        <div class="modal-services" id="modalServices"></div>
+
+        <div class="modal-footer-actions">
+          <a href="#membresias" class="btn-primary" onclick="closeSede()">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            Inscribirse en esta sede
+          </a>
+          <a id="modalMapLink" href="#" target="_blank" rel="noopener noreferrer" class="modal-map-btn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Ver en mapa
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
+    // ── Sede Modal Data ──
+    const sedes = {
+      quito: {
+        city: 'Quito',
+        tag: 'Sede principal',
+        img: 'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=1200&q=85',
+        addr: 'Av. República del Salvador N35-65 y Suecia, Quito 170503',
+        hours: 'Lun–Vie 05:00–23:00\nSáb–Dom 06:00–22:00',
+        phone: '+593 2 246-8831',
+        area: '2,800 m²',
+        capacity: '340 personas',
+        members: '6,142 activos',
+        mapUrl: 'https://maps.google.com/?q=Av+República+del+Salvador+Quito',
+        services: [
+          'Sala de pesas libres', 'Plataformas olímpicas', 'Cardio avanzado',
+          'Spinning', 'CrossFit', 'HIIT', 'Yoga & Pilates', 'Functional Training',
+          'Sauna seco', 'Crioterapia', 'Nutricionista en sede', 'Tienda Gymbro',
+          'Estacionamiento gratuito', 'Custodia de valores', 'Wifi alta velocidad',
+        ]
+      },
+      guayaquil: {
+        city: 'Guayaquil',
+        tag: 'Abierta 24h',
+        img: 'https://images.unsplash.com/photo-1593079831268-3381b0db4a77?w=1200&q=85',
+        addr: 'Av. Francisco de Orellana y Joaquín Orrantia, Guayaquil 090505',
+        hours: 'Abierto las 24 horas\nlos 365 días del año',
+        phone: '+593 4 268-1147',
+        area: '2,400 m²',
+        capacity: '280 personas',
+        members: '5,387 activos',
+        mapUrl: 'https://maps.google.com/?q=Av+Francisco+de+Orellana+Guayaquil',
+        services: [
+          'Sala de pesas libres', 'Cardio avanzado', 'Spinning', 'HIIT',
+          'Clases nocturnas', 'Functional Training', 'Boxeo & Kickboxing',
+          'Sauna húmedo', 'Zona de recuperación activa', 'Bar de proteínas',
+          'Acceso sin personal 24h', 'Wifi alta velocidad', 'Vestuarios premium',
+        ]
+      },
+      cuenca: {
+        city: 'Cuenca',
+        tag: 'Nueva sede 2024',
+        img: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=1200&q=85',
+        addr: 'Av. Solano 10-43 y Remigio Crespo, Cuenca 010204',
+        hours: 'Lun–Vie 05:30–22:30\nSáb–Dom 07:00–21:00',
+        phone: '+593 7 284-3392',
+        area: '2,100 m²',
+        capacity: '220 personas',
+        members: '2,742 activos',
+        mapUrl: 'https://maps.google.com/?q=Av+Solano+Cuenca+Ecuador',
+        services: [
+          'Sala de pesas libres', 'Plataformas olímpicas', 'Cardio avanzado',
+          'Spinning', 'Yoga & Pilates', 'Zumba', 'HIIT', 'Sauna seco',
+          'Fisioterapeuta en sede', 'Nutricionista', 'Wifi alta velocidad',
+          'Estacionamiento gratuito',
+        ]
+      }
+    };
+
+    function openSede(key) {
+      const s = sedes[key];
+      document.getElementById('modalHeroImg').src = s.img;
+      document.getElementById('modalHeroImg').alt = 'Sede ' + s.city;
+      document.getElementById('modalCity').textContent = s.city;
+      document.getElementById('modalTag').textContent = s.tag;
+      document.getElementById('modalAddr').textContent = s.addr;
+      document.getElementById('modalHours').innerHTML = s.hours.replace('\n', '<br>');
+      document.getElementById('modalPhone').textContent = s.phone;
+      document.getElementById('modalArea').textContent = s.area;
+      document.getElementById('modalCapacity').textContent = s.capacity;
+      document.getElementById('modalMembers').textContent = s.members;
+      document.getElementById('modalMapLink').href = s.mapUrl;
+
+      const svcs = document.getElementById('modalServices');
+      svcs.innerHTML = s.services.map(sv =>
+        `<span class="service-chip">${sv}</span>`
+      ).join('');
+
+      const modal = document.getElementById('sedeModal');
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      document.getElementById('modalSheet').scrollTop = 0;
+    }
+
+    function closeSede() {
+      document.getElementById('sedeModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function handleBackdropClick(e) {
+      if (e.target === document.getElementById('sedeModal')) closeSede();
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeSede();
+    });
+
+    document.querySelectorAll('.location-card').forEach(card => {
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') card.click();
+      });
+    });
+
     // ── Hamburger Menu ──
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
